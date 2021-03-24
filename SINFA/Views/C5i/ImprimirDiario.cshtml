@@ -13,124 +13,87 @@
 }
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/style.css">
-    <!--cdn ICONOS SVG-->
-    <link href="~/css/WebFont/font-css/LineIcons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!--bootstrap 4.6-->
+    <link rel="stylesheet" href="~/Dependencies/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!--bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <!-- animista css animations-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
+
+
 <body>
     <div id="mainContainer" class="main">
         <div class="render preview-diario">
-            <div class="search-wrap box mt30">
+            <div class="justify-content-between container search-wrap box mt30 d-flex mb-3 mt-5 ">
                 <div class="abrir">
-                    <button class="btn atras-btn" id="abrir">
-                        <a href="/AsistenciaVial/">ATRAS</a>
-                    </button>
+                        <a class="mb-3" href="/C5i"><h3><i class="bi bi-arrow-left"></i> Panel Principal</h3></a>
                 </div>
                 <div class="abrir">
-                    <button class="btn accent-btn" id="Imprimir">
-                        IMPRIMIR
+                    <button class="btn btn-primary" id="Imprimir">
+                        <i class="bi bi-printer"></i> Imprimir
                     </button>
                 </div>
             </div>
             <div class="resultados-wrap">
                 <!--item inicio-->
-                <div id="notaResumida" class="item nota-imprimir-asistencia">
-                    <div class="nota">
+                <div id="notaResumida" class="item nota-imprimir-asistencia container background-primary shadow">
+                    <div class="nota nota pt-5 pb-5 mb-5">
                         <div class="notaSection d-flex justify-content-between">
                             <div>
-                                <img class="imprimir-img-dependencia" src="~/img/mopcLogo.png" />
+                                <img class="imprimir-img-dependencia" src="~/img/mide-logo.png" />
                             </div>
                             <div class="text-center mb70">
-                                <h4>MINISTERIO DE OBRAS PUBLICAS Y COMUNICACIONES</h4>
-                                <h4>COMISION MILITAR Y POLICIAL (COMIPOL)</h4>
-                                <h4><b>Resumen de Eventos Ocurridos</b></h4>
-                                <h5>Desde las @_apertura del dia @String.Format("{0:dd/MM/yyyy}", _inicio) hasta las @_cierre del dia @String.Format("{0:dd/MM/yyyy}", _final)</h5>
+                                <h3><strong>Republica Dominicana</strong></h3>
+                                <h3><strong>MINISTERIO DE DEFENSA</strong></h3>
+                                <h2>CENTRO DE COMANDO, CONTROL, COMUNICACIONES, COMPUTADORAS, CIBERSEGURIDAD E INTELIGENCIA (C5i)</h2>
+                                <h5 class="mt-3"><i>"Todo por la Patria"</i></h5>
+                                <h5 class="mt-5">Compendio de las Informaciones emitidas por las Comandancias Generales y dependencias de las 
+                                Fuerzas Armadas desde las @_apertura del dia @String.Format("{0:dd/MM/yyyy}", _inicio) hasta las @_cierre del dia @String.Format("{0:dd/MM/yyyy}", _final)</h5>
                             </div>
-                            <img class="imprimir-img-dependencia" src="~/img/comipol.jpg" />
+                            <img class="imprimir-img-dependencia" src="~/img/c5i.png" />
                         </div>
-                        <div class="notaSection d-flex justify-content-center">
-                            <img class="qrCode" src="@String.Format("data:image/png;base64,{0}", _qr)" />
-                        </div>
-
                     </div>
 
                     <!--ZONA DE IMPRESION-->
                     @foreach (var item in _notas)
                     {
-                        <div class="notaSection">
-                            <div class="mini-nota-impresion d-flex">
-                                <div class="col-lg-1 pr20 numero-nota d-flex">
-                                    <h4>@posiciones</h4>
+                        <div class="nota p-5">
+                            <div class="d-flex">
+                                <div class="col-lg-8 no-bootstrap-padding">
+                                    <h3 class="mb-4"><b>@item.asunto</b></h3>
                                 </div>
-                                @*<div class="col-lg-4 numero-nota d-flex">
-                                    @if (_imagenes[contador].IdNota == item.Id_Nota.Value)
-                                    {
-                                        if (_imagenes[contador].ImagenFiltro.Count > 0)
-                                        {
-                                            <img src="@String.Format("data:image/png;base64,{0}", _imagenes[contador].ImagenFiltro[0])" />
-                                        }
-                                        else
-                                        {
-                                            <h4>Sin imagen</h4>
-                                        }
-
-                                    }
-                                </div>*@
-
-                                 <div class="col-lg-3 pr20">
-                                    <h4>Asunto:</h4>
-                                    <p>
-                                        @item.asunto.
-                                    </p>
-                                </div>
-                                <div class="col-lg-4 pr20">
-                                    <h4>Detalles:</h4>
-                                    <p>
-                                        @item.detalles.
-                                    </p>
-                                </div>
-                               
                             </div>
-                            <div class="mini-nota-impresion d-flex">
-                                <div class="col-lg-2 ml74">                                
-                                    <h5 style="color:red">@item.fecha</h5>¿
+                            <div class="d-flex justify-content-between">
+
+                                <div class="col-lg-8 flex-column d-flex justify-content-between no-bootstrap-padding">
+                                    <p>@item.detalles</p>
+                                    <div class="d-flex justify-content-start flex-column">
+                                        <h4 class="secondary-text"><span class="mini-subtitle"><i class="bi bi-geo-alt"></i> @item.direccion</span>, @item.sector, @item.municipio, @item.provincia</h4>
+                                        <h4 class="secondary-text"><i class="bi bi-clock"></i> @item.hora</h4>
+                                    </div>
+                                    <!---<h5 class="mini-subtitle">Escribiente: <span id="nombreEscribiente">@item.rango. @item.nombres @item.apellidos., @item.institucion</span></h5>-->
                                 </div>
-                                <div class="col-lg-10">
-                                    <h5 class="text-left">
-                                        <span class="destacado" id="provincia"><i class="lni lni-map-marker"></i> @item.id_provincia</span>
-                                    </h5>
+
+                                <div class="col-lg-4">
+                                    <div class="diario-img-wrap overflow-hidden w-100 h-100">
+                                        <img class="w-100" src="~/img/blank-img.png" />
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-                        <hr>
                         contador++;
                         posiciones++;
                     }
                     <!-- FIN DE ZONA DE IMPRESION-->
-
-
-
                 </div>
-                <!--item final-->
 
             </div>
         </div>
     </div>
 </body>
 
-<div id="marcaDeAgua" class="watermark-wrap">
-    <div class="watermark">
-        <p>
-            @for (int i = 0; i < 1000; i++)
-            {
-                <span>@Session["Rango"].ToString() @Session["Usuario"].ToString() @Session["Institucion"].ToString() </span>
-            }
 
-        </p>
-    </div>
-</div>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-@*<script src="~/Scripts/printThis.js"></script>
-<script src="~/Scripts/js/AsistenciaVial/ImprimirDiario.js"></script>*@

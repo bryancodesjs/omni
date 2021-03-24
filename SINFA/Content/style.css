@@ -177,6 +177,10 @@ h4 {
 .diario-img-wrap {
     border-radius:5px;
 }
+.imprimir-img-dependencia {
+    width: 134px;
+    height: 134px;
+}
 /*animation properties*/
 .duration-500 {
     --animate-duration: 0.5s;
