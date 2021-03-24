@@ -1,0 +1,136 @@
+﻿
+@{
+    Layout = null;
+    var _inicio = ViewBag.Inicio;
+    var _final = ViewBag.Final;
+    var _notas = ViewBag.Notas;
+    //var _imagenes = ViewBag.Imagenes;
+    var _apertura = ViewBag.Apertura;
+    var _cierre = ViewBag.Cierre;
+    var contador = 0;
+    var posiciones = 1;
+    var _qr = ViewBag.Qr;
+}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <!--cdn ICONOS SVG-->
+    <link href="~/css/WebFont/font-css/LineIcons.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="mainContainer" class="main">
+        <div class="render preview-diario">
+            <div class="search-wrap box mt30">
+                <div class="abrir">
+                    <button class="btn atras-btn" id="abrir">
+                        <a href="/AsistenciaVial/">ATRAS</a>
+                    </button>
+                </div>
+                <div class="abrir">
+                    <button class="btn accent-btn" id="Imprimir">
+                        IMPRIMIR
+                    </button>
+                </div>
+            </div>
+            <div class="resultados-wrap">
+                <!--item inicio-->
+                <div id="notaResumida" class="item nota-imprimir-asistencia">
+                    <div class="nota">
+                        <div class="notaSection d-flex justify-content-between">
+                            <div>
+                                <img class="imprimir-img-dependencia" src="~/img/mopcLogo.png" />
+                            </div>
+                            <div class="text-center mb70">
+                                <h4>MINISTERIO DE OBRAS PUBLICAS Y COMUNICACIONES</h4>
+                                <h4>COMISION MILITAR Y POLICIAL (COMIPOL)</h4>
+                                <h4><b>Resumen de Eventos Ocurridos</b></h4>
+                                <h5>Desde las @_apertura del dia @String.Format("{0:dd/MM/yyyy}", _inicio) hasta las @_cierre del dia @String.Format("{0:dd/MM/yyyy}", _final)</h5>
+                            </div>
+                            <img class="imprimir-img-dependencia" src="~/img/comipol.jpg" />
+                        </div>
+                        <div class="notaSection d-flex justify-content-center">
+                            <img class="qrCode" src="@String.Format("data:image/png;base64,{0}", _qr)" />
+                        </div>
+
+                    </div>
+
+                    <!--ZONA DE IMPRESION-->
+                    @foreach (var item in _notas)
+                    {
+                        <div class="notaSection">
+                            <div class="mini-nota-impresion d-flex">
+                                <div class="col-lg-1 pr20 numero-nota d-flex">
+                                    <h4>@posiciones</h4>
+                                </div>
+                                @*<div class="col-lg-4 numero-nota d-flex">
+                                    @if (_imagenes[contador].IdNota == item.Id_Nota.Value)
+                                    {
+                                        if (_imagenes[contador].ImagenFiltro.Count > 0)
+                                        {
+                                            <img src="@String.Format("data:image/png;base64,{0}", _imagenes[contador].ImagenFiltro[0])" />
+                                        }
+                                        else
+                                        {
+                                            <h4>Sin imagen</h4>
+                                        }
+
+                                    }
+                                </div>*@
+
+                                 <div class="col-lg-3 pr20">
+                                    <h4>Asunto:</h4>
+                                    <p>
+                                        @item.asunto.
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 pr20">
+                                    <h4>Detalles:</h4>
+                                    <p>
+                                        @item.detalles.
+                                    </p>
+                                </div>
+                               
+                            </div>
+                            <div class="mini-nota-impresion d-flex">
+                                <div class="col-lg-2 ml74">                                
+                                    <h5 style="color:red">@item.fecha</h5>¿
+                                </div>
+                                <div class="col-lg-10">
+                                    <h5 class="text-left">
+                                        <span class="destacado" id="provincia"><i class="lni lni-map-marker"></i> @item.id_provincia</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        contador++;
+                        posiciones++;
+                    }
+                    <!-- FIN DE ZONA DE IMPRESION-->
+
+
+
+                </div>
+                <!--item final-->
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<div id="marcaDeAgua" class="watermark-wrap">
+    <div class="watermark">
+        <p>
+            @for (int i = 0; i < 1000; i++)
+            {
+                <span>@Session["Rango"].ToString() @Session["Usuario"].ToString() @Session["Institucion"].ToString() </span>
+            }
+
+        </p>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+@*<script src="~/Scripts/printThis.js"></script>
+<script src="~/Scripts/js/AsistenciaVial/ImprimirDiario.js"></script>*@

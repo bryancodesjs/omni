@@ -1,0 +1,139 @@
+﻿<div class="render preview-diario">
+    <!-- titulo de vista -->
+    <div class="render-title text-center">
+        <h3>MINISTERIO DE OBRAS PÚBLICAS Y COMUNICACIONES</h3>
+        <h3>“COMISIÓN MILITAR Y POLICIAL”</h3>
+        <h4><b>DEPARTAMENTO DE LA CENTRAL DE RADIO (R5)</b></h4>
+        
+    </div>
+    <div class="render-subtitle text-center mt-mb-20">
+        <h4>
+            PARTE DIARIO DEL PROGRAMA DE PROTECCIÓN Y ASISTENCIA VIAL
+            DEL DÍA @DateTime.Now.ToString("dd/M/yyyy");
+        </h4>
+    </div>
+    <div class="search-wrap box">
+        <div class="search">
+            <input id="search" type="text" placeholder="Buscar en las notas de este diario...">
+            <button class="btn buscar-btn" id="searchButton">BUSCAR</button>
+        </div>
+        <div class="abrir">
+            <button class="btn accent-btn" id="abrir">
+                <a href="/R6/NuevaNota"><i class="lni lni-plus"></i> NUEVA NOTA</a>
+            </button>
+        </div>
+    </div>
+    <div class="resultados-wrap">
+        <!--item inicio-->
+        <div id="notaResumida" class="item">
+            <div class="nota">
+                <div class="notaSection d-flex justify-content-end">
+                    <div class="boton-rapido-wrap" id="wrapDeBotones" class="botones-nota-wrap slide-in-top">
+                        <button class="boton-rapido hover-accent border-right" title="Imprimir esta nota">Imprimir</button>
+                        <button class="boton-rapido hover-accent border-right" title="Editar esta nota"><i class="lni lni-pencil"></i></button>
+                        <button class="boton-rapido hover-cancel" title="Eliminar esta nota"><b>X</b></button>
+                    </div>
+                </div>
+                <div class="notaSection d-flex justify-content-between">
+                    <div class="asunto-wrap text-left">
+                        <div class="no-hora-wrap"><h5 id="numeroYHora">No.<span>1</span> - <span id="horaNota">08:35</span></h5></div>
+                        <h4 id="asuntoDeNota">Colisión Multiple</h4>
+                        <h5>
+                            <span class="destacado" id="provincia">
+                                <i class="lni lni-map-marker"></i> Cibao Norte
+                            </span>
+                        </h5>
+                    </div>
+                    <div class="tipo-asistencia-wrap text-right">
+                        <h5 class="mini-subtitle">Tipo de Evento</h5>
+                        <h4 class="">Accidente</h4>
+                        <h5 id="indicadorSolucionado">Solucionado <i class="lni lni-checkmark"></i></h5>
+                    </div>
+                </div>
+
+                <div class="notaSection">
+                    <h4>Personas: <span id="totalPersonasR5">4</span></h4>
+                    <p>
+                        Se registraron <span id="cantidadHeridosR5" class="warning">2</span> herido(s), <span id="cantidadFallecidosR5">0</span> fallecido(s), <span id="cantidadTrasladadosR5" class="warning">2</span> trasladado(s) y <span id="cantidadDetenidosR5" class="">0</span> detenido(s).
+                    </p>
+                </div>
+                <div class="notaSection">
+                    <h4>Vehiculos: <span id="cantidadTotalVehiculosR5">2</span></h4>
+                    <p>
+                        <span id="cantidadMotocicletasR5">1</span> motocicleta(s),<span id="cantidadVehiculosLivianosR5">1</span> liviano(s) y <span id="cantidaVehiculosPesadosR5">0</span> pesado(s).
+                    </p>
+                </div>
+                <div class="notaSection">
+                    <h4>Descripcion:</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec tristique augue vitae odio consequat, id fermentum
+                        dui viverra. Etiam luctus, turpis sit amet iaculis iaculis,
+                        lorem libero tristique nibh, sed consectetur leo velit vel
+                        felis. Curabitur nec tortor orci. Sed tellus lacus, egestas
+                        nec dolor eget, consectetur vehicula diam. Nullam id eros
+                        ipsum. Etiam eget magna ipsum. Sed eu lectus.
+                    </p>
+                </div>
+
+                <div class="notaSection mb-20">
+                    <h4>Unidad que Asistió: <span id="idUnidadR5" class="accent">SIERRA-14</span></h4>
+
+                </div>
+
+                <div class="notaSection">
+                    <h5 class="mini-subtitle">Escribiente: <span id="nombreEscribiente">Sgto. Campos H., FARD</span></h5>
+                </div>
+                <div class="notaSection">
+                    <h5 class="mini-subtitle">Hora de creación: <span id="horacreacion">8:50AM</span></h5>
+                </div>
+            </div>
+
+            <div id="marcaDeAgua" class="watermark-wrap">
+                <div class="watermark">
+                    <p>
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+                        FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+        <!--item final-->
+
+    </div>
+</div>

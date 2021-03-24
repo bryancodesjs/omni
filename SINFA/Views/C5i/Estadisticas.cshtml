@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Nueva Nota Seguimiento";
+}
+
+<div class="render preview-diario">
+
+    <div class="resultados-wrap mt100">
+        <!--item inicio-->
+        <div class="item">
+
+            <div class="multiple-input-wrap text-center">
+                <h2>Nueva Nota</h2>
+                <input type="number" value="" hidden />
+            </div>
+
+            <div class="multiple-input-wrap text-center">
+                <h4>Seleccione el Tipo de Nota</h4>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Eje / Directiva / Operación <span class="mandatory">*</span></h5>
+                    <select id="Eje">
+                        <option value="" disabled selected>Seleccione</option>
+                        <option value="" disabled>--------------------------------</option>
+                        <option value="" disabled>EJES</option>
+                        <option value="1">Defensa Nacional</option>
+                        <option value="2">Seguridad Interior</option>
+                        <option value="3">Seguridad Ciudadana</option>
+                        <option value="4">Proteccion Civil</option>
+                        <option value="" disabled>--------------------------------</option>
+                        <option value="" disabled>DIRECTIVAS</option>
+                        <option value="5">Directiva Vigentes y Operaciones</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 pr10 _categorias">
+                    <h5>Categoría</h5>
+                    <select id="categoriasSelect">
+                        @*<option value="1">Operaciones ERD</option>
+                        <option value="">Operaciones FARD</option>
+                        <option value="">222020</option>*@
+                    </select>
+                </div>
+                <div class="col-lg-4 _subCategoria">
+                    <h5>Sub-categoria</h5>
+                    <select id="subCategoriasSelect">
+                        
+                    </select>
+                </div>
+            </div>
+
+            <div class="container div_seguimientoDiario">
+                <div class="multiple-input-wrap text-center">
+                    <h4>Seguimiento Diario Casos Positivos y Sospechosos</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Provincias Impactadas</th>
+                                <th scope="col">Visitas Realizadas</th>
+                                <th scope="col">Equipos Empleados</th>
+                                <th scope="col">Visitas Acumuladas</th>
+                                <th scope="col">Fallecidos del Dia</th>
+                                <th scope="col">Traslados del dia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="multiple-input-wrap mt-mb-20 text-center">
+                    <h4>Agregar Seguimiento</h4>
+                </div>
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Provincia <span class="mandatory">*</span></h5>
+                        <select id="selectorProvincia">
+                            <option value="0" selected disabled>Seleccione provincia</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Visitas Realizadas</h5>
+                        <input type="text" placeholder="Asunto" id="visitasRealizadas">
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Equipos Empleados</h5>
+                        <input type="text" placeholder="Asunto" id="Equipos">
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Visitas Acumuladas <span class="mandatory">*</span></h5>
+                        <input type="text" placeholder="Asunto" id="visitasAcumuladas">
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Fallecidos del Dia</h5>
+                        <input type="text" placeholder="Asunto" id="fallecidos">
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Traslados del Dia</h5>
+                        <input type="text" placeholder="Asunto" id="traslados">
+                    </div>
+                </div>
+
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn accent-btn" style="background-color:var(--green-btn);" type="button" id="Agregar">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNota">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+        <!--item final-->
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="~/Scripts/scripts/sweetalert.js"></script>
+<script src="~/Scripts/scripts/C5i/Estadisticas/Estadisticas.js"></script>

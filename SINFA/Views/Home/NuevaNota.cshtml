@@ -1,0 +1,84 @@
+﻿<div class="render preview-diario">
+    <!-- titulo de vista -->
+    <div class="render-title text-center">
+        <h1>Nueva Nota</h1>
+    </div>
+
+    <div class="resultados-wrap">
+        <!--item inicio-->
+        <div class="item">
+            <div class="multiple-input-wrap text-center">
+                <h4>PASO 1</h4>
+                <h2>Datos de Asistencia</h2>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-8 pr10">
+                    <h5>Asunto <span class="mandatory">*</span></h5>
+                    <input type="text" placeholder="Asunto">
+                </div>
+                <div class="col-lg-4">
+                    <h5>Tipo de Asistencia</h5>
+                    <select name="asistencia" id="tipoAsistencia">
+                        <option value="">Fallo Mecanico</option>
+                        <option value="">Combustible</option>
+                        <option value="">Neumatico</option>
+                        <option value="">Frenos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Provincia</h5>
+                    <select name="provincia" id="selectorProvincia">
+                        <option value="">Santo Domingo</option>
+                        <option value="">Santiago</option>
+                        <option value="">Puerto Plata</option>
+                        <option value="">Cambita</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 pr10">
+                    <h5>Fecha</h5>
+                    <input type="date" placeholder="Fecha">
+                </div>
+                <div class="col-lg-4">
+                    <h5>Hora</h5>
+                    <input type="time" placeholder="hora">
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <h5>Direccion del Evento</h5>
+                    <input type="text" placeholder="Direccion del Evento">
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <h5>Detalles del Evento</h5>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <h5>Acciones Tomadas</h5>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <!-- el snippet para cargar imagenes lo vamos a poner en otra pantalla-->
+            <!-- <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">imagenes</div>
+            </div> -->
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-8">
+                    <input class="inputCheckbox" id="solucionado" type="checkbox" name="solucionado">
+                    <label for="solucionado">Solucionado?</label>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-end">
+                    <button class="btn cancel-btn"><a href="/home/Diario">Cancelar</a></button>
+                    <button class="btn accent-btn"><a href="/home/NuevaNotaDos">Ir al Paso 2</a></button>
+                </div>
+            </div>
+        </div>
+        <!--item final-->
+        
+    </div>
+</div>

@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B1E749D-C86F-491C-9984-91EB468F126C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SINFA</RootNamespace>
+    <AssemblyName>SINFA</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44359</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding">
+      <HintPath>..\..\..\SINFA\SINFA\Bin\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\C5iController.cs" />
+    <Compile Include="Controllers\DirectivasController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\R6Controller.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="helpers\ObtenerHora.cs" />
+    <Compile Include="helpers\Respuesta.cs" />
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\aeropuerto.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\cama.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\categoria.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\centro.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\centrosAislamiento.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\diario.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\directiva.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\eje.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\institucion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\interdicciones_migratorias.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\intervenciones_migratorias.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\llegada_vuelos.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Municipio.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\nacionalidad.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\nota.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\nuevos_casos_hoy.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\operaciones_realizadas.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Provincia.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\rango.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\Sector.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\seguimientocasospositivoscovid.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\subcategoria.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\subdirectiva.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\uci.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\usuario.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\ventiladore.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\Modelos\Login.cs" />
+    <Compile Include="Models\C5i\Modelos\NuevaNota.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\experimentacion.js" />
+    <Content Include="Content\style.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\WebFont\demo.html" />
+    <Content Include="css\WebFont\demo\css\LineIcons.css" />
+    <Content Include="css\WebFont\demo\css\reset.css" />
+    <Content Include="css\WebFont\demo\favicon.png" />
+    <Content Include="css\WebFont\font-css\LineIcons.css" />
+    <Content Include="css\WebFont\fonts\LineIcons.svg" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-reboot.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap.min.css" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.bundle.js" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.js" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.min.js" />
+    <Content Include="Dependencies\bootstrap-icons\.fantasticonrc.js" />
+    <Content Include="Dependencies\bootstrap-icons\.gitattributes" />
+    <Content Include="Dependencies\bootstrap-icons\.github\preview.png" />
+    <Content Include="Dependencies\bootstrap-icons\.gitignore" />
+    <Content Include="Dependencies\bootstrap-icons\bootstrap-icons.svg" />
+    <Content Include="Dependencies\bootstrap-icons\build\build-pages.js" />
+    <Content Include="Dependencies\bootstrap-icons\build\build-svgs.js" />
+    <Content Include="Dependencies\bootstrap-icons\build\vnu-jar.js" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\js\application.js" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\js\vendor\clipboard.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="img\blank-img.png" />
+    <Content Include="img\c5i.png" />
+    <Content Include="img\cerrado.png" />
+    <Content Include="img\cesac.png" />
+    <Content Include="img\checkedDoc.png" />
+    <Content Include="img\comipol.jpg" />
+    <Content Include="img\comipolr5.png" />
+    <Content Include="img\mopc-1.jpeg" />
+    <Content Include="img\mopc-2.jpg" />
+    <Content Include="img\mopc-3.jpg" />
+    <Content Include="img\mopc-4.jpg" />
+    <Content Include="img\mopc-5.jpg" />
+    <Content Include="img\mopcLogo.png" />
+    <Content Include="img\omni-logo.png" />
+    <Content Include="img\r5.png" />
+    <Content Include="Models\C5i\DB_SQL_EntityFramework\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\C5i\DB_SQL_EntityFramework\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="css\style.css.map" />
+    <Content Include="css\style.scss" />
+    <Content Include="img\Thumbs.db" />
+    <Content Include="css\WebFont\.DS_Store" />
+    <Content Include="css\WebFont\demo\.DS_Store" />
+    <Content Include="css\WebFont\demo\css\.DS_Store" />
+    <Content Include="css\WebFont\font-css\.DS_Store" />
+    <Content Include="css\WebFont\fonts\LineIcons.eot" />
+    <Content Include="css\WebFont\fonts\LineIcons.ttf" />
+    <Content Include="css\WebFont\fonts\LineIcons.woff" />
+    <Content Include="css\WebFont\fonts\LineIcons.woff2" />
+    <Content Include="css\WebFont\less\.DS_Store" />
+    <Content Include="css\WebFont\less\icons.less" />
+    <Content Include="css\WebFont\less\main.less" />
+    <Content Include="css\WebFont\less\mixins.less" />
+    <Content Include="css\WebFont\less\variables.less" />
+    <Content Include="css\WebFont\scss\.DS_Store" />
+    <Content Include="css\WebFont\scss\icons.scss" />
+    <Content Include="css\WebFont\scss\main.scss" />
+    <Content Include="css\WebFont\scss\_mixins.scss" />
+    <Content Include="css\WebFont\scss\_variables.scss" />
+    <Content Include="css\WebFont\unicodesMap.json" />
+    <EntityDeploy Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap.min.css.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.js.map" />
+    <Content Include="Dependencies\bootstrap-4.6.0-dist\js\bootstrap.min.js.map" />
+    <Content Include="Dependencies\bootstrap-icons\.browserslistrc" />
+    <Content Include="Dependencies\bootstrap-icons\.editorconfig" />
+    <Content Include="Dependencies\bootstrap-icons\.eslintignore" />
+    <Content Include="Dependencies\bootstrap-icons\.eslintrc.json" />
+    <Content Include="Dependencies\bootstrap-icons\.github\dependabot.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <Content Include="Dependencies\bootstrap-icons\.github\ISSUE_TEMPLATE\icon-request.md" />
+    <Content Include="Dependencies\bootstrap-icons\.github\release-drafter.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.github\workflows\codeql.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.github\workflows\deploy.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.github\workflows\release-notes.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.github\workflows\test.yml" />
+    <Content Include="Dependencies\bootstrap-icons\.stylelintrc" />
+    <Content Include="Dependencies\bootstrap-icons\build\font\css.hbs" />
+    <Content Include="Dependencies\bootstrap-icons\build\font\html.hbs" />
+    <Content Include="Dependencies\bootstrap-icons\config.yml" />
+    <Content Include="Dependencies\bootstrap-icons\docs\.eslintrc.json" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\docs.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_ads.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_buttons.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_clipboard-js.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_footer.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_functions.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_navbar.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_skippy.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_syntax.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\assets\scss\_variables.scss" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\404.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\alarm-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\alarm.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-bottom.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-center.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-end.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-middle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-start.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\align-top.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\alt.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\app-indicator.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\app.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\archive-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\archive.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-90deg-down.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-90deg-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-90deg-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-90deg-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-bar-down.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-bar-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-bar-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-bar-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-clockwise.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-counterclockwise.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-left-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-left-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-left-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-left-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-right-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-right-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-right-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-right-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-short.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-down.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-short.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-repeat.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-return-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-return-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right-short.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-left-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-left-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-left-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-left-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-right-circle-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-right-circle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-right-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-right-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-short.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-square-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up-square.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrow-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-angle-contract.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-angle-expand.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-collapse.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-expand.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-fullscreen.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\arrows-move.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\aspect-ratio-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\aspect-ratio.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\asterisk.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\at.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\award-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\award.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\back.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\backspace-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\backspace-reverse-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\backspace-reverse.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\backspace.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-3d-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-3d.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-4k-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-4k.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-8k-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-8k.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-ad-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-ad.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-ar-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-ar.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-cc-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-cc.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-hd-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-hd.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-tm-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-tm.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-vo-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-vo.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-vr-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-vr.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-wc-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\badge-wc.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-check-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-check.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-dash-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-dash.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-plus-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-plus.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-x-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag-x.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bag.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bar-chart-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bar-chart-line-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bar-chart-line.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bar-chart-steps.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bar-chart.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket2-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket2.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket3-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\basket3.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\battery-charging.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\battery-full.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\battery-half.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\battery.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bell-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bell.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bezier.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bezier2.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bicycle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\binoculars-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\binoculars.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\blockquote-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\blockquote-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\book-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\book-half.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\book.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-check-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-check.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-dash-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-dash.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-heart-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-heart.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-plus-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-plus.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-star-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-star.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-x-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark-x.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmark.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmarks-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookmarks.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bookshelf.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bootstrap-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bootstrap-reboot.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bootstrap.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-all.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-bottom.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-center.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-inner.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-middle.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-outer.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-style.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-top.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border-width.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\border.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bounding-box-circles.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bounding-box.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-down-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-down-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-down.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-down-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-down-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-down.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-up-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-up-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-in-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-up-left.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-up-right.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-arrow-up.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box-seam.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\box.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\braces.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bricks.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\briefcase-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\briefcase.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-alt-high-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-alt-high.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-alt-low-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-alt-low.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-high-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-high.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-low-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brightness-low.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\broadcast-pin.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\broadcast.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brush-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\brush.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bucket-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bucket.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bug-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bug.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\building.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\bullseye.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\calculator-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\calculator.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\calendar-check-fill.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\icons\calendar-check.md" />
+    <Content Include="Dependencies\bootstrap-icons\docs\content\_index.md" />
+    <Content Include="Dependencies\bootstrap-icons\LICENSE.md" />
+    <Content Include="Dependencies\bootstrap-icons\package-lock.json" />
+    <Content Include="Dependencies\bootstrap-icons\package.json" />
+    <Content Include="Dependencies\bootstrap-icons\README.md" />
+    <Content Include="Dependencies\bootstrap-icons\svgo.yml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\scripts\axios.min.js" />
+    <Content Include="Scripts\scripts\C5i\auth\Auth.js" />
+    <Content Include="Scripts\scripts\C5i\auth\Salir.js" />
+    <Content Include="Scripts\scripts\C5i\Diario\Diario.js" />
+    <Content Include="Scripts\scripts\C5i\Estadisticas\Estadisticas.js" />
+    <Content Include="Scripts\scripts\C5i\Index\Index.js" />
+    <Content Include="Scripts\scripts\C5i\Notas\EditarNota.js" />
+    <Content Include="Scripts\scripts\C5i\Notas\GuardarNota.js" />
+    <Content Include="Scripts\scripts\C5i\Notas\Menu.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Centros_Aislamientos.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Hospitalarios_covid19.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Interdicciones_migratorias.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Intervenciones.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Llegada_vuelos.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\NuevosCasos_Hoy.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Operaciones_realizadas.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Relacion_Institucion.js" />
+    <Content Include="Scripts\scripts\C5i\Tabla\Tablas.js" />
+    <Content Include="Scripts\scripts\sweetalert.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Diario.cshtml" />
+    <Content Include="Views\Home\NuevaNota.cshtml" />
+    <Content Include="Views\Home\NuevaNotaDos.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\R6\About.cshtml" />
+    <Content Include="Views\R6\Contact.cshtml" />
+    <Content Include="Views\R6\Diario.cshtml" />
+    <Content Include="Views\R6\Index.cshtml" />
+    <Content Include="Views\R6\NuevaNota.cshtml" />
+    <Content Include="Views\R6\NuevaNotaDos.cshtml" />
+    <Content Include="Views\R6\Estadistica.cshtml" />
+    <Content Include="Views\R6\Imprimir.cshtml" />
+    <Content Include="Views\Home\Imprimir.cshtml" />
+    <Content Include="Views\C5i\Index.cshtml" />
+    <Content Include="Views\C5i\NuevaNota.cshtml" />
+    <Content Include="Views\C5i\Diario.cshtml" />
+    <Content Include="Views\C5i\ImprimirDiario.cshtml" />
+    <Content Include="Views\C5i\EditarNota.cshtml" />
+    <Content Include="Views\C5i\Estadisticas.cshtml" />
+    <Content Include="Views\C5i\Search.cshtml" />
+    <Content Include="Views\C5i\NuevaTabla.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Directivas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57121</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44359/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

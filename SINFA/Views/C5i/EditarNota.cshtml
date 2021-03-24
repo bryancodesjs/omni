@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "EditarNota";
+    var nota = ViewBag.Nota;
+}
+<div class="render c5i-render">
+    <div class="render-title">
+        <h2>EditarNota Id: @nota[0].id_nota</h2>
+    </div>
+    <div class="resultados-wrap ml50">
+        <!--item inicio-->
+        <div class="item">
+
+            <div class="multiple-input-wrap text-center">
+                <h2>Editar Nota</h2>
+                <input type="number" value="@nota[0].id_nota" id="_idNota" hidden />
+                <input type="number" value="@nota[0].id_diario" id="_idDiario" hidden />
+                <input type="number" value="@nota[0].eliminado" id="_eliminado" hidden />
+            </div>
+
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-6 pr10">
+                    <h5>Institución / Directiva / Plan de Operaciones</h5>
+                    <select id="selectorInstitucion">
+                        <option value="1" selected>@nota[0].institucion</option>
+                        <option value="1">Ejercito Nacional</option>
+                        <option value="">Cesfront</option>
+                        <option value="">Cestur</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Asunto <span class="mandatory">*</span></h5>
+                    <input type="text" placeholder="Asunto" id="Asunto" value="@nota[0].asunto">
+                </div>
+                <div class="col-lg-4 pr10">
+                    <h5>Fecha</h5>
+                    <input type="datetime" id="Fecha" value="@String.Format("{0:yyyy/MM/dd}", nota[0].fecha)">
+                </div>
+                <div class="col-lg-4">
+                    <h5>Hora</h5>
+                    <input type="time" placeholder="hora" id="Hora" value="@nota[0].hora">
+                </div>
+
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Provincia</h5>
+                    <select id="selectorProvincia">
+                        <option value="@nota[0].id_provincia" selected >@nota[0].provincia (Actual)</option>                        
+                    </select>
+                </div>
+
+                <div class="col-lg-4 pr10">
+                    <h5>Municipio</h5>
+                    <select id="selectorMunicipio">
+                        <option value="@nota[0].id_municipio" selected>@nota[0].municipio (Actual)</option>                        
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5>Sector</h5>
+                    <select id="selectorSector">
+                        <option value="@nota[0].id_sector" selected>@nota[0].sector</option>                        
+                    </select>
+                </div>
+
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <h5>Direccion del Evento</h5>
+                    <input type="text" placeholder="Direccion del Evento" id="Direccion" value="@nota[0].direccion">
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <h5>Detalles del Evento</h5>
+                    <textarea id="Detalles" cols="30" rows="10" spellcheck="true">@nota[0].detalles</textarea>
+                </div>
+            </div>
+
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12 d-flex justify-content-end">
+                    @*<button class="btn cancel-btn"><a href="/C5i/Diario/@id">Cancelar</a></button>*@
+                    <button class="btn accent-btn" type="button" id="_guardarCambios">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+        <!--item final-->
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="~/Scripts/scripts/sweetalert.js"></script>
+<script src="~/Scripts/scripts/C5i/Notas/EditarNota.js"></script>

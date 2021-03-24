@@ -1,0 +1,121 @@
+﻿<div class="render preview-diario">
+    <!-- titulo de vista -->
+    <div class="render-title text-center">
+        <h1>Nueva Nota R5</h1>
+    </div>
+
+    <div class="resultados-wrap">
+        <!--item inicio-->
+        <div class="item">
+            <div class="multiple-input-wrap text-center">
+                <h2>Datos del Evento</h2>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-8 pr10">
+                    <h5>Modo de Evento<span class="mandatory">*</span></h5>
+                    <select name="asistencia" id="tipoAsistencia">
+                        <option value="">Colision</option>
+                        <option value="">Choque</option>
+                        <option value="">Salida de via</option>
+                        <option value="">Atropellamiento</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Tipo de Evento</h5>
+                    <select name="asistencia" id="tipoAsistencia">
+                        <option value="">Accidente</option>
+                        <option value="">Combustible</option>
+                        <option value="">Neumatico</option>
+                        <option value="">Frenos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Zona</h5>
+                    <select name="provincia" id="selectorProvincia">
+                        <option value="">AMERICA TRAMO 1</option>
+                        <option value="">AMERICA TRAMO 2</option>
+                        <option value="">CIBAO SUR 1</option>
+                        <option value="">CIBAO SUR 2</option>
+                        <option value="">SURESTE TRAMO 1</option>
+                        <option value="">SURESTE TRAMO 2</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 pr10">
+                    <h5>Fecha</h5>
+                    <input type="date" placeholder="Fecha">
+                </div>
+                <div class="col-lg-4">
+                    <h5>Hora</h5>
+                    <input type="time" placeholder="hora">
+                </div>
+            </div>
+            <div class="multiple-input-wrap text-center">
+                <h2>Personas</h2>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-3 pr10">
+                    <h5>Heridos</h5>
+                    <input type="number" placeholder="0" />
+                </div>
+                <div class="col-lg-3 pr10">
+                    <h5>Fallecidos</h5>
+                    <input type="number" placeholder="0" />
+                </div>
+                <div class="col-lg-3 pr10">
+                    <h5>Trasladados</h5>
+                    <input type="number" placeholder="0" />
+                </div>
+                <div class="col-lg-3">
+                    <h5>Detenidos</h5>
+                    <input type="number" placeholder="0" />
+                </div>
+            </div>
+            <div class="multiple-input-wrap text-center">
+                <h2>Vehiculos</h2>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Motocicletas</h5>
+                    <input type="number" placeholder="0"/>
+                </div>
+                <div class="col-lg-4 pr10">
+                    <h5>Livianos</h5>
+                    <input type="number" placeholder="0" />
+                </div>
+                <div class="col-lg-4">
+                    <h5>Pesados</h5>
+                    <input type="number" placeholder="0"/>
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12">
+                    <input class="inputCheckbox" id="agregarDetalles" type="checkbox" name="detalles"> 
+                    <label for="agregarDetalle"> Agregar Detalles</label>
+                    <!-- <h5>Detalles del Evento</h5> -->
+                    <textarea class="add-details" name="" id="add-details-box" cols="30" rows="10" spellcheck="true"></textarea>
+                </div>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+
+            </div>
+            <!-- el snippet para cargar imagenes lo vamos a poner en otra pantalla-->
+            <!-- <div class="multiple-input-wrap d-flex">
+        <div class="col-lg-12">imagenes</div>
+    </div> -->
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-8">
+                    <input class="inputCheckbox" id="solucionado" type="checkbox" name="solucionado">
+                    <label for="solucionado">Solucionado?</label>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-end">
+                    <button class="btn cancel-btn"><a href="/home/Diario">Cancelar</a></button>
+                    <button class="btn accent-btn"><a href="#">Guardar</a></button>
+                </div>
+            </div>
+        </div>
+        <!--item final-->
+        
+    </div>
+</div>

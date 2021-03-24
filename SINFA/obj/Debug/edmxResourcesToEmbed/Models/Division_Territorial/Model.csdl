@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DivisionTerritorialModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRegion" Type="Int32" />
+    <Property Name="IdProvincia" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Provincia" Relationship="Self.FK_Municipio_Provincia" FromRole="Municipio" ToRole="Provincia" />
+  </EntityType>
+  <EntityType Name="Provincia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRegion" Type="Int32" />
+    <Property Name="IdProvincia" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Municipios" Relationship="Self.FK_Municipio_Provincia" FromRole="Provincia" ToRole="Municipio" />
+  </EntityType>
+  <EntityType Name="Sector">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRegion" Type="Double" Nullable="false" />
+    <Property Name="IdProvincia" Type="Double" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Double" Nullable="false" />
+    <Property Name="IdDistritoMunicipal" Type="Double" Nullable="false" />
+    <Property Name="IdSector" Type="Double" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Municipio_Provincia">
+    <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DivisionTerritorialEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+    <EntitySet Name="Sectors" EntityType="Self.Sector" />
+    <AssociationSet Name="FK_Municipio_Provincia" Association="Self.FK_Municipio_Provincia">
+      <End Role="Provincia" EntitySet="Provincias" />
+      <End Role="Municipio" EntitySet="Municipios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

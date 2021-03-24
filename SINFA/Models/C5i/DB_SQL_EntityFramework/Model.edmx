@@ -1,0 +1,1015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NOTAS_C5iModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aeropuerto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="145" />
+        </EntityType>
+        <EntityType Name="camas">
+          <Key>
+            <PropertyRef Name="id_cama" />
+          </Key>
+          <Property Name="id_cama" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total" Type="int" />
+          <Property Name="ocupada" Type="int" />
+          <Property Name="disponible" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_eje" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="165" />
+        </EntityType>
+        <EntityType Name="centros">
+          <Key>
+            <PropertyRef Name="id_centro" />
+          </Key>
+          <Property Name="id_centro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="total_centros" Type="int" />
+          <Property Name="id_cama" Type="int" />
+          <Property Name="id_uci" Type="int" />
+          <Property Name="id_ventilador" Type="int" />
+          <Property Name="tipo_centro" Type="varchar" MaxLength="65" />
+        </EntityType>
+        <EntityType Name="centrosAislamiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="centro" Type="varchar" MaxLength="195" />
+          <Property Name="personal" Type="varchar" MaxLength="95" />
+          <Property Name="habilitadas" Type="int" />
+          <Property Name="ocupadas" Type="int" />
+          <Property Name="disponibles" Type="int" />
+        </EntityType>
+        <EntityType Name="diario">
+          <Key>
+            <PropertyRef Name="id_diario" />
+          </Key>
+          <Property Name="id_diario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora_apertura" Type="time" Precision="7" />
+          <Property Name="hora_cierre" Type="time" Precision="7" />
+          <Property Name="cerrado" Type="int" />
+        </EntityType>
+        <EntityType Name="directivas">
+          <Key>
+            <PropertyRef Name="id_directiva" />
+          </Key>
+          <Property Name="id_directiva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="295" />
+        </EntityType>
+        <EntityType Name="ejes">
+          <Key>
+            <PropertyRef Name="id_eje" />
+          </Key>
+          <Property Name="id_eje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="65" />
+        </EntityType>
+        <EntityType Name="institucion">
+          <Key>
+            <PropertyRef Name="id_institucion" />
+          </Key>
+          <Property Name="id_institucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="395" />
+          <Property Name="logo" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="interdicciones_migratorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="erd" Type="int" />
+          <Property Name="ftci" Type="int" />
+          <Property Name="cesfront" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="intervenciones_migratorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="id_institucion" Type="int" />
+          <Property Name="directiva" Type="varchar" MaxLength="95" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="id_nacionalidad" Type="int" />
+          <Property Name="retorno_voluntario" Type="int" />
+          <Property Name="hombres" Type="int" />
+          <Property Name="mujeres" Type="int" />
+          <Property Name="ninos" Type="int" />
+          <Property Name="total" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="llegada_vuelos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_aeropuerto" Type="int" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="tipo_prueba" Type="varchar" MaxLength="95" />
+          <Property Name="cantidad_vuelos" Type="int" />
+          <Property Name="pasajeros" Type="int" />
+          <Property Name="pruebas_pcr" Type="int" />
+          <Property Name="pruebas_realizadas" Type="int" />
+          <Property Name="pruebas_positivas" Type="int" />
+          <Property Name="pruebas_sospechosos" Type="int" />
+          <Property Name="pruebas_negativas" Type="int" />
+          <Property Name="porcentaje_presentadas" Type="int" />
+          <Property Name="porcentaje_realizadas" Type="int" />
+          <Property Name="porcentaje_positivas" Type="int" />
+          <Property Name="porcentaje_sospechosos" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegion" Type="int" />
+          <Property Name="IdProvincia" Type="int" />
+          <Property Name="IdMunicipio" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="nacionalidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pais" Type="varchar" MaxLength="95" />
+        </EntityType>
+        <EntityType Name="notas">
+          <Key>
+            <PropertyRef Name="id_nota" />
+          </Key>
+          <Property Name="id_nota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_institucion" Type="int" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="id_municipio" Type="int" />
+          <Property Name="id_sector" Type="int" />
+          <Property Name="asunto" Type="varchar(max)" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="direccion" Type="text" />
+          <Property Name="detalles" Type="varchar(max)" />
+          <Property Name="eliminado" Type="int" />
+        </EntityType>
+        <EntityType Name="nuevos_casos_hoy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="confirmados" Type="int" />
+          <Property Name="fallecidos" Type="int" />
+          <Property Name="nuevasPruebas" Type="int" />
+        </EntityType>
+        <EntityType Name="operaciones_realizadas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="lugar" Type="int" />
+          <Property Name="unidad" Type="varchar" MaxLength="165" />
+          <Property Name="personas_detenidas" Type="int" />
+          <Property Name="vehiculos_detenidos" Type="int" />
+          <Property Name="mercancia_retenida" Type="varchar" MaxLength="165" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegion" Type="int" />
+          <Property Name="IdProvincia" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="rango">
+          <Key>
+            <PropertyRef Name="id_rango" />
+          </Key>
+          <Property Name="id_rango" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_institucion" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="295" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="IdProvincia" Type="int" Nullable="false" />
+          <Property Name="IdMunicipio" Type="int" Nullable="false" />
+          <Property Name="IdDistritoMunicipal" Type="int" Nullable="false" />
+          <Property Name="IdSector" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seguimientocasospositivoscovid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_diario" Type="int" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="visitas_realizadas" Type="int" />
+          <Property Name="equipos" Type="int" />
+          <Property Name="visitas_acomuladas" Type="int" />
+          <Property Name="fallecidos" Type="int" />
+          <Property Name="traslados" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="subcategorias">
+          <Key>
+            <PropertyRef Name="id_subcategoria" />
+          </Key>
+          <Property Name="id_subcategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="135" />
+        </EntityType>
+        <EntityType Name="subdirectivas">
+          <Key>
+            <PropertyRef Name="id_subdirectivas" />
+          </Key>
+          <Property Name="id_subdirectivas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_directiva" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="395" />
+        </EntityType>
+        <EntityType Name="uci">
+          <Key>
+            <PropertyRef Name="id_uci" />
+          </Key>
+          <Property Name="id_uci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total" Type="int" />
+          <Property Name="ocupada" Type="int" />
+          <Property Name="disponible" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_institucion" Type="int" />
+          <Property Name="id_rango" Type="int" />
+          <Property Name="nombres" Type="varchar" MaxLength="255" />
+          <Property Name="apellidos" Type="varchar" MaxLength="255" />
+          <Property Name="cedula" Type="varchar" MaxLength="30" />
+          <Property Name="telefono" Type="varchar" MaxLength="30" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="acceso" Type="int" />
+          <Property Name="usuario" Type="varchar" MaxLength="155" />
+          <Property Name="clave" Type="varchar" MaxLength="495" />
+        </EntityType>
+        <EntityType Name="ventiladores">
+          <Key>
+            <PropertyRef Name="id_ventiladores" />
+          </Key>
+          <Property Name="id_ventiladores" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total" Type="int" />
+          <Property Name="ocupada" Type="int" />
+          <Property Name="disponible" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <Association Name="FK_Municipio_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NOTAS_C5iModelStoreContainer">
+          <EntitySet Name="aeropuerto" EntityType="Self.aeropuerto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="camas" EntityType="Self.camas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="centros" EntityType="Self.centros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="centrosAislamiento" EntityType="Self.centrosAislamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="diario" EntityType="Self.diario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="directivas" EntityType="Self.directivas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ejes" EntityType="Self.ejes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="institucion" EntityType="Self.institucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="interdicciones_migratorias" EntityType="Self.interdicciones_migratorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="intervenciones_migratorias" EntityType="Self.intervenciones_migratorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="llegada_vuelos" EntityType="Self.llegada_vuelos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nacionalidad" EntityType="Self.nacionalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notas" EntityType="Self.notas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nuevos_casos_hoy" EntityType="Self.nuevos_casos_hoy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operaciones_realizadas" EntityType="Self.operaciones_realizadas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rango" EntityType="Self.rango" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seguimientocasospositivoscovid" EntityType="Self.seguimientocasospositivoscovid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subcategorias" EntityType="Self.subcategorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subdirectivas" EntityType="Self.subdirectivas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uci" EntityType="Self.uci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ventiladores" EntityType="Self.ventiladores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Municipio_Provincia" Association="Self.FK_Municipio_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NOTAS_C5iModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_eje" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="diario">
+          <Key>
+            <PropertyRef Name="id_diario" />
+          </Key>
+          <Property Name="id_diario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora_apertura" Type="Time" Precision="7" />
+          <Property Name="hora_cierre" Type="Time" Precision="7" />
+          <Property Name="cerrado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="eje">
+          <Key>
+            <PropertyRef Name="id_eje" />
+          </Key>
+          <Property Name="id_eje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="institucion">
+          <Key>
+            <PropertyRef Name="id_institucion" />
+          </Key>
+          <Property Name="id_institucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="395" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegion" Type="Int32" />
+          <Property Name="IdProvincia" Type="Int32" />
+          <Property Name="IdMunicipio" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Municipio_Provincia" FromRole="Municipio" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="nota">
+          <Key>
+            <PropertyRef Name="id_nota" />
+          </Key>
+          <Property Name="id_nota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_institucion" Type="Int32" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="id_municipio" Type="Int32" />
+          <Property Name="id_sector" Type="Int32" />
+          <Property Name="asunto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="detalles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="eliminado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegion" Type="Int32" />
+          <Property Name="IdProvincia" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Municipios" Relationship="Self.FK_Municipio_Provincia" FromRole="Provincia" ToRole="Municipio" />
+        </EntityType>
+        <EntityType Name="rango">
+          <Key>
+            <PropertyRef Name="id_rango" />
+          </Key>
+          <Property Name="id_rango" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_institucion" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="295" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+          <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+          <Property Name="IdDistritoMunicipal" Type="Int32" Nullable="false" />
+          <Property Name="IdSector" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seguimientocasospositivoscovid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="visitas_realizadas" Type="Int32" />
+          <Property Name="equipos" Type="Int32" />
+          <Property Name="visitas_acomuladas" Type="Int32" />
+          <Property Name="fallecidos" Type="Int32" />
+          <Property Name="traslados" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_institucion" Type="Int32" />
+          <Property Name="id_rango" Type="Int32" />
+          <Property Name="nombres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="acceso" Type="Int32" />
+          <Property Name="usuario1" Type="String" MaxLength="155" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="495" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Municipio_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categorias" EntityType="Self.categoria" />
+          <EntitySet Name="diarios" EntityType="Self.diario" />
+          <EntitySet Name="ejes" EntityType="Self.eje" />
+          <EntitySet Name="institucions" EntityType="Self.institucion" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+          <EntitySet Name="notas" EntityType="Self.nota" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+          <EntitySet Name="rangoes" EntityType="Self.rango" />
+          <EntitySet Name="Sectors" EntityType="Self.Sector" />
+          <EntitySet Name="seguimientocasospositivoscovids" EntityType="Self.seguimientocasospositivoscovid" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_Municipio_Provincia" Association="Self.FK_Municipio_Provincia">
+            <End Role="Provincia" EntitySet="Provincias" />
+            <End Role="Municipio" EntitySet="Municipios" />
+          </AssociationSet>
+          <EntitySet Name="subcategorias" EntityType="NOTAS_C5iModel.subcategoria" />
+          <EntitySet Name="directivas" EntityType="NOTAS_C5iModel.directiva" />
+          <EntitySet Name="subdirectivas" EntityType="NOTAS_C5iModel.subdirectiva" />
+          <EntitySet Name="operaciones_realizadas" EntityType="NOTAS_C5iModel.operaciones_realizadas" />
+          <EntitySet Name="camas" EntityType="NOTAS_C5iModel.cama" />
+          <EntitySet Name="centros" EntityType="NOTAS_C5iModel.centro" />
+          <EntitySet Name="ucis" EntityType="NOTAS_C5iModel.uci" />
+          <EntitySet Name="ventiladores" EntityType="NOTAS_C5iModel.ventiladore" />
+          <EntitySet Name="centrosAislamientoes" EntityType="NOTAS_C5iModel.centrosAislamiento" />
+          <EntitySet Name="aeropuertoes" EntityType="NOTAS_C5iModel.aeropuerto" />
+          <EntitySet Name="llegada_vuelos" EntityType="NOTAS_C5iModel.llegada_vuelos" />
+          <EntitySet Name="nuevos_casos_hoy" EntityType="NOTAS_C5iModel.nuevos_casos_hoy" />
+          <EntitySet Name="nacionalidads" EntityType="NOTAS_C5iModel.nacionalidad" />
+          <EntitySet Name="intervenciones_migratorias" EntityType="NOTAS_C5iModel.intervenciones_migratorias" />
+          <EntitySet Name="interdicciones_migratorias" EntityType="NOTAS_C5iModel.interdicciones_migratorias" />
+        </EntityContainer>
+        <EntityType Name="subcategoria">
+          <Key>
+            <PropertyRef Name="id_subcategoria" />
+          </Key>
+          <Property Name="id_subcategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="135" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="directiva">
+          <Key>
+            <PropertyRef Name="id_directiva" />
+          </Key>
+          <Property Name="id_directiva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="295" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="subdirectiva">
+          <Key>
+            <PropertyRef Name="id_subdirectivas" />
+          </Key>
+          <Property Name="id_subdirectivas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_directiva" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="395" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="operaciones_realizadas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="lugar" Type="Int32" />
+          <Property Name="unidad" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+          <Property Name="personas_detenidas" Type="Int32" />
+          <Property Name="vehiculos_detenidos" Type="Int32" />
+          <Property Name="mercancia_retenida" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="cama">
+          <Key>
+            <PropertyRef Name="id_cama" />
+          </Key>
+          <Property Name="id_cama" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="ocupada" Type="Int32" />
+          <Property Name="disponible" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="centro">
+          <Key>
+            <PropertyRef Name="id_centro" />
+          </Key>
+          <Property Name="id_centro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="total_centros" Type="Int32" />
+          <Property Name="id_cama" Type="Int32" />
+          <Property Name="id_uci" Type="Int32" />
+          <Property Name="id_ventilador" Type="Int32" />
+          <Property Name="tipo_centro" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="uci">
+          <Key>
+            <PropertyRef Name="id_uci" />
+          </Key>
+          <Property Name="id_uci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="ocupada" Type="Int32" />
+          <Property Name="disponible" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ventiladore">
+          <Key>
+            <PropertyRef Name="id_ventiladores" />
+          </Key>
+          <Property Name="id_ventiladores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="ocupada" Type="Int32" />
+          <Property Name="disponible" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="centrosAislamiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="centro" Type="String" MaxLength="195" FixedLength="false" Unicode="false" />
+          <Property Name="personal" Type="String" MaxLength="95" FixedLength="false" Unicode="false" />
+          <Property Name="habilitadas" Type="Int32" />
+          <Property Name="ocupadas" Type="Int32" />
+          <Property Name="disponibles" Type="Int32" />
+        </EntityType>
+        <EntityType Name="aeropuerto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="145" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="llegada_vuelos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_aeropuerto" Type="Int32" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="tipo_prueba" Type="String" MaxLength="95" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad_vuelos" Type="Int32" />
+          <Property Name="pasajeros" Type="Int32" />
+          <Property Name="pruebas_pcr" Type="Int32" />
+          <Property Name="pruebas_realizadas" Type="Int32" />
+          <Property Name="pruebas_positivas" Type="Int32" />
+          <Property Name="pruebas_sospechosos" Type="Int32" />
+          <Property Name="pruebas_negativas" Type="Int32" />
+          <Property Name="porcentaje_presentadas" Type="Int32" />
+          <Property Name="porcentaje_realizadas" Type="Int32" />
+          <Property Name="porcentaje_positivas" Type="Int32" />
+          <Property Name="porcentaje_sospechosos" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="nuevos_casos_hoy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="confirmados" Type="Int32" />
+          <Property Name="fallecidos" Type="Int32" />
+          <Property Name="nuevasPruebas" Type="Int32" />
+        </EntityType>
+        <EntityType Name="nacionalidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pais" Type="String" MaxLength="95" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="intervenciones_migratorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_institucion" Type="Int32" />
+          <Property Name="directiva" Type="String" MaxLength="95" FixedLength="false" Unicode="false" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="id_nacionalidad" Type="Int32" />
+          <Property Name="retorno_voluntario" Type="Int32" />
+          <Property Name="hombres" Type="Int32" />
+          <Property Name="mujeres" Type="Int32" />
+          <Property Name="ninos" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="interdicciones_migratorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_diario" Type="Int32" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="erd" Type="Int32" />
+          <Property Name="ftci" Type="Int32" />
+          <Property Name="cesfront" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NOTAS_C5iModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="id_eje" ColumnName="id_eje" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diarios">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.diario">
+              <MappingFragment StoreEntitySet="diario">
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_apertura" ColumnName="hora_apertura" />
+                <ScalarProperty Name="hora_cierre" ColumnName="hora_cierre" />
+                <ScalarProperty Name="cerrado" ColumnName="cerrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ejes">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.eje">
+              <MappingFragment StoreEntitySet="ejes">
+                <ScalarProperty Name="id_eje" ColumnName="id_eje" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="institucions">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.institucion">
+              <MappingFragment StoreEntitySet="institucion">
+                <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.nota">
+              <MappingFragment StoreEntitySet="notas">
+                <ScalarProperty Name="id_nota" ColumnName="id_nota" />
+                <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+                <ScalarProperty Name="id_sector" ColumnName="id_sector" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rangoes">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.rango">
+              <MappingFragment StoreEntitySet="rango">
+                <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+                <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sectors">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.Sector">
+              <MappingFragment StoreEntitySet="Sector">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+                <ScalarProperty Name="IdDistritoMunicipal" ColumnName="IdDistritoMunicipal" />
+                <ScalarProperty Name="IdSector" ColumnName="IdSector" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seguimientocasospositivoscovids">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.seguimientocasospositivoscovid">
+              <MappingFragment StoreEntitySet="seguimientocasospositivoscovid">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="visitas_realizadas" ColumnName="visitas_realizadas" />
+                <ScalarProperty Name="equipos" ColumnName="equipos" />
+                <ScalarProperty Name="visitas_acomuladas" ColumnName="visitas_acomuladas" />
+                <ScalarProperty Name="fallecidos" ColumnName="fallecidos" />
+                <ScalarProperty Name="traslados" ColumnName="traslados" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+                <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="acceso" ColumnName="acceso" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subcategorias">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.subcategoria">
+              <MappingFragment StoreEntitySet="subcategorias">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="id_subcategoria" ColumnName="id_subcategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="directivas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.directiva">
+              <MappingFragment StoreEntitySet="directivas">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_directiva" ColumnName="id_directiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subdirectivas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.subdirectiva">
+              <MappingFragment StoreEntitySet="subdirectivas">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_directiva" ColumnName="id_directiva" />
+                <ScalarProperty Name="id_subdirectivas" ColumnName="id_subdirectivas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones_realizadas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.operaciones_realizadas">
+              <MappingFragment StoreEntitySet="operaciones_realizadas">
+                <ScalarProperty Name="mercancia_retenida" ColumnName="mercancia_retenida" />
+                <ScalarProperty Name="vehiculos_detenidos" ColumnName="vehiculos_detenidos" />
+                <ScalarProperty Name="personas_detenidas" ColumnName="personas_detenidas" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="camas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.cama">
+              <MappingFragment StoreEntitySet="camas">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="id_cama" ColumnName="id_cama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="centros">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.centro">
+              <MappingFragment StoreEntitySet="centros">
+                <ScalarProperty Name="tipo_centro" ColumnName="tipo_centro" />
+                <ScalarProperty Name="id_ventilador" ColumnName="id_ventilador" />
+                <ScalarProperty Name="id_uci" ColumnName="id_uci" />
+                <ScalarProperty Name="id_cama" ColumnName="id_cama" />
+                <ScalarProperty Name="total_centros" ColumnName="total_centros" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id_centro" ColumnName="id_centro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ucis">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.uci">
+              <MappingFragment StoreEntitySet="uci">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="id_uci" ColumnName="id_uci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventiladores">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.ventiladore">
+              <MappingFragment StoreEntitySet="ventiladores">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="id_ventiladores" ColumnName="id_ventiladores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="centrosAislamientoes">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.centrosAislamiento">
+              <MappingFragment StoreEntitySet="centrosAislamiento">
+                <ScalarProperty Name="disponibles" ColumnName="disponibles" />
+                <ScalarProperty Name="ocupadas" ColumnName="ocupadas" />
+                <ScalarProperty Name="habilitadas" ColumnName="habilitadas" />
+                <ScalarProperty Name="personal" ColumnName="personal" />
+                <ScalarProperty Name="centro" ColumnName="centro" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aeropuertoes">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.aeropuerto">
+              <MappingFragment StoreEntitySet="aeropuerto">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="llegada_vuelos">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.llegada_vuelos">
+              <MappingFragment StoreEntitySet="llegada_vuelos">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="porcentaje_sospechosos" ColumnName="porcentaje_sospechosos" />
+                <ScalarProperty Name="porcentaje_positivas" ColumnName="porcentaje_positivas" />
+                <ScalarProperty Name="porcentaje_realizadas" ColumnName="porcentaje_realizadas" />
+                <ScalarProperty Name="porcentaje_presentadas" ColumnName="porcentaje_presentadas" />
+                <ScalarProperty Name="pruebas_negativas" ColumnName="pruebas_negativas" />
+                <ScalarProperty Name="pruebas_sospechosos" ColumnName="pruebas_sospechosos" />
+                <ScalarProperty Name="pruebas_positivas" ColumnName="pruebas_positivas" />
+                <ScalarProperty Name="pruebas_realizadas" ColumnName="pruebas_realizadas" />
+                <ScalarProperty Name="pruebas_pcr" ColumnName="pruebas_pcr" />
+                <ScalarProperty Name="pasajeros" ColumnName="pasajeros" />
+                <ScalarProperty Name="cantidad_vuelos" ColumnName="cantidad_vuelos" />
+                <ScalarProperty Name="tipo_prueba" ColumnName="tipo_prueba" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id_aeropuerto" ColumnName="id_aeropuerto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nuevos_casos_hoy">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.nuevos_casos_hoy">
+              <MappingFragment StoreEntitySet="nuevos_casos_hoy">
+                <ScalarProperty Name="nuevasPruebas" ColumnName="nuevasPruebas" />
+                <ScalarProperty Name="fallecidos" ColumnName="fallecidos" />
+                <ScalarProperty Name="confirmados" ColumnName="confirmados" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nacionalidads">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.nacionalidad">
+              <MappingFragment StoreEntitySet="nacionalidad">
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="intervenciones_migratorias">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.intervenciones_migratorias">
+              <MappingFragment StoreEntitySet="intervenciones_migratorias">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="ninos" ColumnName="ninos" />
+                <ScalarProperty Name="mujeres" ColumnName="mujeres" />
+                <ScalarProperty Name="hombres" ColumnName="hombres" />
+                <ScalarProperty Name="retorno_voluntario" ColumnName="retorno_voluntario" />
+                <ScalarProperty Name="id_nacionalidad" ColumnName="id_nacionalidad" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="directiva" ColumnName="directiva" />
+                <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="interdicciones_migratorias">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.interdicciones_migratorias">
+              <MappingFragment StoreEntitySet="interdicciones_migratorias">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="cesfront" ColumnName="cesfront" />
+                <ScalarProperty Name="ftci" ColumnName="ftci" />
+                <ScalarProperty Name="erd" ColumnName="erd" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

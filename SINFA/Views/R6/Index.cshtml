@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Diario R5 - COMIPOL";
+}
+
+<div class="render resumen">
+    <!-- titulo de vista -->
+    <div class="render-title">
+        <h1>Diario de Novedades R-5</h1>
+    </div>
+    <!-- barra de busqueda -->
+    <div class="search-wrap box">
+        <div class="search">
+            <input id="search" type="text" placeholder="Buscar notas...">
+            <button class="btn buscar-btn" id="searchButton">BUSCAR</button>
+        </div>
+        <div class="abrir">
+            <button class="btn accent-btn" id="abrir"><i class="lni lni-plus"></i> ABRIR NUEVO</button>
+        </div>
+    </div>
+    <hr class="view-hr">
+    <!-- muestra de resultados e historial -->
+    <div class="resultados-wrap">
+
+        <div class="item">
+            <div class="detalles">
+                <div class="col-lg-1 folder d-flex-center">
+                    <img src="~/img/checkedDoc.png" alt="">
+                </div>
+                <div class="col-lg-5 divider-r">
+                    <div class="fecha"><h4 id="fechaNota">13-1-2021</h4></div>
+                    <div class="hora"><h5 class="abierto" id="horaNota">Abierto</h5></div>
+                </div>
+                <div class="col-lg-3 datosEscribienteWrap">
+                    <div class="fecha"><h5 id="">Escribiente</h5></div>
+                    <div class="hora"><h5 id="idEscribiente">Sgto. Campos H., FARD</h5></div>
+                </div>
+                <div class="col-lg-3">
+                    <a href="/R6/Diario">
+                        <div class="imprimir" title="Click para imprimir">
+                            <i class="lni lni-eye"></i>
+                            <h5>Ver</h5>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="imprimir" title="Click para imprimir">
+                            <i class="lni lni-printer"></i>
+                            <h5>Imprimir</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="detalles">
+                <div class="col-lg-1 folder d-flex-center">
+                    <img src="~/img/cerrado.png" alt="">
+                </div>
+                <div class="col-lg-5 divider-r">
+                    <div class="fecha"><h4 id="fechaNota">13-1-2021</h4></div>
+                    <div class="hora"><h5 id="horaNota">Apertura: 06:32 │ Cierre: 17:35</h5></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fecha"><h5 id="">Escribiente</h5></div>
+                    <div class="hora"><h5 id="idEscribiente">Sgto. Campos H., FARD</h5></div>
+                </div>
+                <div class="col-lg-3">
+                    <a>
+                        <div class="imprimir" title="Click para imprimir">
+                            <i class="lni lni-eye"></i>
+                            <h5>Ver</h5>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="imprimir" title="Click para imprimir">
+                            <i class="lni lni-printer"></i>
+                            <h5>Imprimir</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            
+                <div class="detalles">
+                    <div class="col-lg-1 folder d-flex-center">
+                        <img src="~/img/cerrado.png" alt="">
+                    </div>
+                    <div class="col-lg-5 divider-r">
+                        <div class="fecha"><h4 id="fechaNota">13-1-2021</h4></div>
+                        <div class="hora"><h5 id="horaNota">Apertura: 06:32 │ Cierre: 17:35</h5></div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="fecha"><h5 id="">Escribiente</h5></div>
+                        <div class="hora"><h5 id="idEscribiente">Sgto. Campos H., FARD</h5></div>
+                    </div>
+                    <div class="col-lg-3">
+                        <a>
+                            <div class="imprimir" title="Click para imprimir">
+                                <i class="lni lni-eye"></i>
+                                <h5>Ver</h5>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="imprimir" title="Click para imprimir">
+                                <i class="lni lni-printer"></i>
+                                <h5>Imprimir</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NOTAS_C5iModelStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="categorias">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="id_eje" ColumnName="id_eje" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diarios">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.diario">
+        <MappingFragment StoreEntitySet="diario">
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora_apertura" ColumnName="hora_apertura" />
+          <ScalarProperty Name="hora_cierre" ColumnName="hora_cierre" />
+          <ScalarProperty Name="cerrado" ColumnName="cerrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ejes">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.eje">
+        <MappingFragment StoreEntitySet="ejes">
+          <ScalarProperty Name="id_eje" ColumnName="id_eje" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="institucions">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.institucion">
+        <MappingFragment StoreEntitySet="institucion">
+          <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipios">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.Municipio">
+        <MappingFragment StoreEntitySet="Municipio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notas">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.nota">
+        <MappingFragment StoreEntitySet="notas">
+          <ScalarProperty Name="id_nota" ColumnName="id_nota" />
+          <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+          <ScalarProperty Name="id_sector" ColumnName="id_sector" />
+          <ScalarProperty Name="asunto" ColumnName="asunto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincias">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.Provincia">
+        <MappingFragment StoreEntitySet="Provincia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rangoes">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.rango">
+        <MappingFragment StoreEntitySet="rango">
+          <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+          <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sectors">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.Sector">
+        <MappingFragment StoreEntitySet="Sector">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdDistritoMunicipal" ColumnName="IdDistritoMunicipal" />
+          <ScalarProperty Name="IdSector" ColumnName="IdSector" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seguimientocasospositivoscovids">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.seguimientocasospositivoscovid">
+        <MappingFragment StoreEntitySet="seguimientocasospositivoscovid">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="visitas_realizadas" ColumnName="visitas_realizadas" />
+          <ScalarProperty Name="equipos" ColumnName="equipos" />
+          <ScalarProperty Name="visitas_acomuladas" ColumnName="visitas_acomuladas" />
+          <ScalarProperty Name="fallecidos" ColumnName="fallecidos" />
+          <ScalarProperty Name="traslados" ColumnName="traslados" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+          <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="acceso" ColumnName="acceso" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategorias">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.subcategoria">
+        <MappingFragment StoreEntitySet="subcategorias">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="id_subcategoria" ColumnName="id_subcategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="directivas">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.directiva">
+        <MappingFragment StoreEntitySet="directivas">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_directiva" ColumnName="id_directiva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subdirectivas">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.subdirectiva">
+        <MappingFragment StoreEntitySet="subdirectivas">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_directiva" ColumnName="id_directiva" />
+          <ScalarProperty Name="id_subdirectivas" ColumnName="id_subdirectivas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operaciones_realizadas">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.operaciones_realizadas">
+        <MappingFragment StoreEntitySet="operaciones_realizadas">
+          <ScalarProperty Name="mercancia_retenida" ColumnName="mercancia_retenida" />
+          <ScalarProperty Name="vehiculos_detenidos" ColumnName="vehiculos_detenidos" />
+          <ScalarProperty Name="personas_detenidas" ColumnName="personas_detenidas" />
+          <ScalarProperty Name="unidad" ColumnName="unidad" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="camas">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.cama">
+        <MappingFragment StoreEntitySet="camas">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+          <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="id_cama" ColumnName="id_cama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="centros">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.centro">
+        <MappingFragment StoreEntitySet="centros">
+          <ScalarProperty Name="tipo_centro" ColumnName="tipo_centro" />
+          <ScalarProperty Name="id_ventilador" ColumnName="id_ventilador" />
+          <ScalarProperty Name="id_uci" ColumnName="id_uci" />
+          <ScalarProperty Name="id_cama" ColumnName="id_cama" />
+          <ScalarProperty Name="total_centros" ColumnName="total_centros" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id_centro" ColumnName="id_centro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ucis">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.uci">
+        <MappingFragment StoreEntitySet="uci">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+          <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="id_uci" ColumnName="id_uci" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventiladores">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.ventiladore">
+        <MappingFragment StoreEntitySet="ventiladores">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+          <ScalarProperty Name="ocupada" ColumnName="ocupada" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="id_ventiladores" ColumnName="id_ventiladores" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="centrosAislamientoes">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.centrosAislamiento">
+        <MappingFragment StoreEntitySet="centrosAislamiento">
+          <ScalarProperty Name="disponibles" ColumnName="disponibles" />
+          <ScalarProperty Name="ocupadas" ColumnName="ocupadas" />
+          <ScalarProperty Name="habilitadas" ColumnName="habilitadas" />
+          <ScalarProperty Name="personal" ColumnName="personal" />
+          <ScalarProperty Name="centro" ColumnName="centro" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aeropuertoes">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.aeropuerto">
+        <MappingFragment StoreEntitySet="aeropuerto">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="llegada_vuelos">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.llegada_vuelos">
+        <MappingFragment StoreEntitySet="llegada_vuelos">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="porcentaje_sospechosos" ColumnName="porcentaje_sospechosos" />
+          <ScalarProperty Name="porcentaje_positivas" ColumnName="porcentaje_positivas" />
+          <ScalarProperty Name="porcentaje_realizadas" ColumnName="porcentaje_realizadas" />
+          <ScalarProperty Name="porcentaje_presentadas" ColumnName="porcentaje_presentadas" />
+          <ScalarProperty Name="pruebas_negativas" ColumnName="pruebas_negativas" />
+          <ScalarProperty Name="pruebas_sospechosos" ColumnName="pruebas_sospechosos" />
+          <ScalarProperty Name="pruebas_positivas" ColumnName="pruebas_positivas" />
+          <ScalarProperty Name="pruebas_realizadas" ColumnName="pruebas_realizadas" />
+          <ScalarProperty Name="pruebas_pcr" ColumnName="pruebas_pcr" />
+          <ScalarProperty Name="pasajeros" ColumnName="pasajeros" />
+          <ScalarProperty Name="cantidad_vuelos" ColumnName="cantidad_vuelos" />
+          <ScalarProperty Name="tipo_prueba" ColumnName="tipo_prueba" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id_aeropuerto" ColumnName="id_aeropuerto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nuevos_casos_hoy">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.nuevos_casos_hoy">
+        <MappingFragment StoreEntitySet="nuevos_casos_hoy">
+          <ScalarProperty Name="nuevasPruebas" ColumnName="nuevasPruebas" />
+          <ScalarProperty Name="fallecidos" ColumnName="fallecidos" />
+          <ScalarProperty Name="confirmados" ColumnName="confirmados" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nacionalidads">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.nacionalidad">
+        <MappingFragment StoreEntitySet="nacionalidad">
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="intervenciones_migratorias">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.intervenciones_migratorias">
+        <MappingFragment StoreEntitySet="intervenciones_migratorias">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="ninos" ColumnName="ninos" />
+          <ScalarProperty Name="mujeres" ColumnName="mujeres" />
+          <ScalarProperty Name="hombres" ColumnName="hombres" />
+          <ScalarProperty Name="retorno_voluntario" ColumnName="retorno_voluntario" />
+          <ScalarProperty Name="id_nacionalidad" ColumnName="id_nacionalidad" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="directiva" ColumnName="directiva" />
+          <ScalarProperty Name="id_institucion" ColumnName="id_institucion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interdicciones_migratorias">
+      <EntityTypeMapping TypeName="NOTAS_C5iModel.interdicciones_migratorias">
+        <MappingFragment StoreEntitySet="interdicciones_migratorias">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cesfront" ColumnName="cesfront" />
+          <ScalarProperty Name="ftci" ColumnName="ftci" />
+          <ScalarProperty Name="erd" ColumnName="erd" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="id_diario" ColumnName="id_diario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

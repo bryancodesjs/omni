@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Panel Principal";
+    var elements = ViewBag.Index;
+}
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-5 animate__animated animate__fadeInDown duration-500">
+    <h2>@ViewBag.Title</h2>
+    <div class="d-flex justify-content-between">
+        <div class="col-lg-6 no-bootstrap-padding d-flex">
+            <!-- <i id="searchIcon" class="bi bi-search"></i> -->
+            @using (Html.BeginForm("Search", "c5i", FormMethod.Post))
+            {
+                <input class="full-width pl-3 mr-2" id="search" type="text" name="texto" spellcheck="true" placeholder="Buscar en todos los diarios...">
+                <button class="btn btn-success btn-buscar" type="submit" id="searchButton"><i class="bi bi-search"></i> Buscar</button>
+
+            }
+        </div>
+        <div class="col-lg-4 d-flex justify-content-end no-bootstrap-padding">
+            <button class="btn btn-primary mr-2" type="button" id="nuevoDiario"><i class="bi bi-file-earmark-plus"></i> Abrir Nuevo Diario</button>
+        </div>
+    </div>
+</section>
+
+<section class="d-flex responsive-x-padding animate__animated animate__fadeInUp duration-500">
+    <h2>Listado de Diarios</h2>
+</section>
+
+<section class="d-flex responsive-x-padding mb-3 animate__animated animate__fadeInUp duration-500">
+    <div class="col-lg-1">Estado</div>
+    <div class="col-lg-2">Fecha <i class="bi bi-chevron-expand"></i></div>
+    <div class="col-lg-5">Escribiente <i class="bi bi-chevron-expand"></i></div>
+    <div class="col-lg-3">Acciones</div>
+</section>
+
+<section class="animate__animated animate__fadeInUp duration-500">
+    <!-- bucle que renderiza los diarios-->
+    @foreach (var item in elements)
+    {
+        if (item.cerrado == "0")
+        {
+            <div class="d-flex responsive-x-padding mb-2">
+                <div class="d-flex background-primary w-100 rounded border diario-resumen">
+
+                    <div class="col-lg-1 pt-4 folder mb-3 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-unlock diario-icon"></i>
+                    </div>
+                    <div class="col-lg-2 pt-4 mb-3 divider-r">
+                        <div class="fecha"><h4 id="fechaNota">Fecha: @String.Format("{0:d/M/yyyy}", item.fecha)</h4></div>
+                        <div class="hora d-flex">
+                            <h4 class="abierto" id="horaNota">Abierto</h4>
+                            <div id="room"></div>
+                            <span class="hotspot main-wrapper">
+                                <span class="hotspot dots-container">
+                                    <span class="hotspot dot1"></span>
+                                    <span class="hotspot dot2"></span>
+                                    <span class="hotspot dot3"></span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pt-4 mb-3 datosEscribienteWrap">
+                        <div class="fecha"><h4 id="">Escribiente</h4></div>
+                        <div class="hora"><h4 class="secondary-text" id="idEscribiente">@item.rango. @item.escribiente., @item.institucion</h4></div>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center">
+                        <a href="/c5i/diario/?id=@item.id_diario&fecha=@String.Format("{0:d/M/yyyy}", item.fecha)">
+                            <div class="imprimir mr-4" title="Click para ver">
+                                <i class="lni lni-eye"></i>
+                                <h4><i class="bi bi-arrow-bar-right"></i> Ver</h4>
+                            </div>
+                        </a>
+                        <a href="/c5i/ImprimirDiario/?id=@item.id_diario">
+                            <div class="imprimir" title="Click para imprimir">
+                                <i class="lni lni-printer"></i>
+                                <h4><i class="bi bi-printer"></i> Imprimir</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div> }
+        else
+        {
+            <div class="d-flex responsive-x-padding mb-2">
+                <div class="d-flex background-primary w-100 rounded border diario-resumen">
+                    <div class="col-lg-1 pt-4 mb-3 folder d-flex align-items-center justify-content-center">
+                        <i class="bi bi-lock-fill diario-icon"></i>
+                    </div>
+                    <div class="col-lg-2 pt-4 mb-3 divider-r">
+                        <div class="fecha"><h4 id="fechaNota">Fecha: @String.Format("{0:d/M/yyyy}", item.fecha) </h4></div>
+                        <div class="hora"><h4 id="horaNota">Apertura: @item.hora_apertura │ Cierre: @item.hora_cierre</h4></div>
+                    </div>
+                    <div class="col-lg-5 pt-4 mb-3">
+                        <div class="fecha"><h4 id="">Escribiente</h4></div>
+                        <div class="hora"><h4 class="secondary-text" id="idEscribiente">@item.rango. @item.escribiente., @item.institucion</h4></div>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center">
+                        <a href="/c5i/diario/?id=@item.id_diario&fecha=@String.Format("{0:d/M/yyyy}", item.fecha)">
+                            <div class="imprimir mr-4" title="Click para ver">
+                                <i class="lni lni-eye"></i>
+                                <h4><i class="bi bi-arrow-bar-right"></i> Ver</h4>
+                            </div>
+                        </a>
+                        <a href="/c5i/ImprimirDiario/?id=@item.id_diario">
+                            <div class="imprimir" title="Click para imprimir">
+                                <i class="lni lni-printer"></i>
+                                <h4><i class="bi bi-printer"></i> Imprimir</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>}
+
+    }
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-4">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Siguiente</a>
+        </li>
+    </ul>
+</nav>
+</section>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="~/Scripts/scripts/sweetalert.js"></script>
+<script src="~/Scripts/scripts/C5i/Index/Index.js"></script>

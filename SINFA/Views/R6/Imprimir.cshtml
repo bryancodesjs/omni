@@ -1,0 +1,266 @@
+﻿
+@{
+    Layout = null;
+}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <!--cdn ICONOS SVG-->
+    <link href="~/css/WebFont/font-css/LineIcons.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="mainContainer" class="main">
+        <div class="render preview-diario">
+            <!-- titulo de vista -->
+            @*<div class="render-title text-center">
+                <h3>MINISTERIO DE OBRAS PÚBLICAS Y COMUNICACIONES</h3>
+                <h3>“COMISIÓN MILITAR Y POLICIAL”</h3>
+                <h4><b>DEPARTAMENTO DE LA CENTRAL DE RADIO (R5)</b></h4>
+            </div>
+            <div class="render-subtitle text-center mt-mb-20">
+                <h4>
+                    PARTE DIARIO DEL PROGRAMA DE PROTECCIÓN Y ASISTENCIA VIAL
+                    DEL DÍA @DateTime.Now.ToString("dd/M/yyyy");
+                </h4>
+            </div>*@
+
+            <div class="search-wrap box mt30">
+                <div class="abrir">
+                    <button class="btn accent-btn" id="abrir">
+                        <a href="/R6/NuevaNota">ATRAS</a>
+                    </button>
+                </div>
+                <div class="abrir">
+                    <button class="btn accent-btn" id="abrir">
+                        <a href="/R6/NuevaNota">IMPRIMIR</a>
+                    </button>
+                </div>
+            </div>
+            <div class="resultados-wrap">
+                <!--item inicio-->
+                <div id="notaResumida" class="item">
+                    <div class="nota nota-imprimir">
+                        <div class="notaSection d-flex justify-content-between">
+                            <div>
+                                <img class="imprimir-img-dependencia" src="~/img/r5.png" />
+                            </div>
+                            <div class="text-center">
+                                <h3>Central De Radio (R5) de la Comision Militar y Policial, MOPC</h3>
+                                <h4><b>RESUMEN DE ASISTENCIAS</b></h4>
+                                <h4>26/1/2021</h4>
+                            </div>
+                            <div>
+                                <img class="imprimir-img-dependencia" src="~/img/comipolr5.png" />
+                            </div>
+                        </div>
+                        <div class="espaciador"></div>
+                        <div class="notaSection">
+                            <div class="chart-wrap col-lg-12">
+                                <h4>Eventos por Zona</h4>
+                                <table class="table table-striped table-bg-1">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Zona</th>
+                                            <th scope="col">Accidente</th>
+                                            <th scope="col">Heridos</th>
+                                            <th scope="col">Fallecidos</th>
+                                            <th scope="col">Trasladados</th>
+                                            <th scope="col">Total Asistencias</th>
+                                            <th scope="col">Vehiculos Retenidos</th>
+                                            <th scope="col">Motos Retenidas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>AMERICA TRAMO 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>AMERICA TRAMO 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>CIBAO SUR 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>CIBAO SUR 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td>SURESTE TRAMO 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">6</th>
+                                            <td>SURESTE TRAMO 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="notaSection">
+                            <div class="chart-wrap col-lg-6">
+                                <h4>Vehiculos Involucrados</h4>
+                                <table class="table table-striped table-bg-1" id="vehiculosTableR5">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Zona</th>
+                                            <th scope="col">Motocicletas</th>
+                                            <th scope="col">Livianos</th>
+                                            <th scope="col">Pesados</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>AMERICA TRAMO 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>AMERICA TRAMO 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>CIBAO SUR 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>CIBAO SUR 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td>SURESTE TRAMO 1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">6</th>
+                                            <td>SURESTE TRAMO 2</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>0</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--item final-->
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<div class="watermark-wrap">
+    <div class="watermark">
+        <p>
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+            FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL FULANO DE TAL
+
+        </p>
+    </div>
+</div>

@@ -1,0 +1,911 @@
+﻿
+@{
+    ViewBag.Title = "NuevaTabla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewBag.IdDiario;
+
+}
+
+<h2>NuevaTabla</h2>
+<div class="render preview-diario">
+
+    <div class="resultados-wrap mt100">
+        <!--item inicio-->
+        <div class="item">
+
+            <div class="multiple-input-wrap text-center">
+                <h2>Nueva Tabla</h2>
+                <input type="number" value="@id" id="IdDiario" hidden />
+            </div>
+
+            <div class="multiple-input-wrap text-center">
+                <h4>Seleccione el Tipo de tabla</h4>
+            </div>
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-4 pr10">
+                    <h5>Eje / Directiva / Operación <span class="mandatory">*</span></h5>
+                    <select id="Eje">
+                    </select>
+                </div>
+                <div class="col-lg-4 pr10 _categorias">
+                    <h5>Categoría</h5>
+                    <select id="categoriasSelect">
+                    </select>
+                </div>
+                <div class="col-lg-4 _subCategoria">
+                    <h5>Sub-categoria</h5>
+                    <select id="subCategoriasSelect">
+                    </select>
+                </div>
+            </div>
+
+            @*SEGUIMIENTO DIARIO*@
+
+            <div class="container div_seguimientoDiario mt-3">
+
+                <div class="multiple-input-wrap mt-mb-20 text-center">
+                    <h4>Agregar Seguimiento</h4>
+                </div>
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Provincia <span class="mandatory">*</span></h5>
+                        <select id="selectorProvincia2">
+                            <option value="0" selected disabled>Seleccione provincia</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Visitas Realizadas</h5>
+                        <input type="text" placeholder="Cantidad" id="visitasRealizadas">
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Equipos Empleados</h5>
+                        <input type="text" placeholder="Cantidad" id="Equipos">
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Visitas Acumuladas <span class="mandatory">*</span></h5>
+                        <input type="text" placeholder="Cantidad" id="visitasAcumuladas">
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Fallecidos del Dia</h5>
+                        <input type="text" placeholder="Cantidad" id="fallecidos">
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Traslados del Dia</h5>
+                        <input type="text" placeholder="Cantidad" id="traslados">
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn accent-btn" style="background-color:var(--green-btn);" type="button" id="Agregar">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap text-center mt-3">
+                    <h4>Seguimiento Diario Casos Positivos y Sospechosos</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Provincias Impactadas</th>
+                                <th scope="col">Visitas Realizadas</th>
+                                <th scope="col">Equipos Empleados</th>
+                                <th scope="col">Visitas Acumuladas</th>
+                                <th scope="col">Fallecidos del Dia</th>
+                                <th scope="col">Traslados del dia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNotaSeguimiento">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <!--item final-->
+            @*EJE DEFENSA NACIONAL - RESULTADOS OPERACIONES REALIZADAS*@
+
+            <!--item inicio-->
+            <div class="container div_OPERACIONES_REALIZADAS mt-3">
+
+                <div class="multiple-input-wrap text-center">
+                    <h2>Nueva Nota</h2>
+                    <input type="number" value="" hidden />
+                </div>
+                <div class="multiple-input-wrap text-center">
+                    <h4>
+                        Eje Defensa Nacional Ejercito de Republica Dominicana
+                    </h4>
+                    <table class="table table-striped">
+                        <thead scope="col">
+                            Resultados de las Operaciones Realizadas</th>
+                            <tr>
+                                <th scope="col">Lugar</th>
+                                <th scope="col">Unidad</th>
+                                <th scope="col">Personas Detenidas</th>
+                                <th scope="col">Vehiculos Retenidos</th>
+                                <th scope="col">Mercancia Retenida</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tablaOperacionesRealizadas">
+                            <tr>
+                                <th scope="row">Sin datos</th>
+                                <td>Sin datos</td>
+                                <td>Sin datos</td>
+                                <td>Sin datos</td>
+                                <td>Sin datos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="multiple-input-wrap mt-mb-20 text-center">
+                    <h4>Agregar Seguimiento</h4>
+                </div>
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Lugar <span class="mandatory">*</span></h5>
+                        <select id="Lugar">
+                            <option value="x" selected disabled>Seleccione provincia</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Unidad</h5>
+                        <input type="text" placeholder="Unidad" id="Unidad">
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Personas Detenidas</h5>
+                        <input type="number" placeholder="0" id="PersonasDetenidas">
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-4 pr10">
+                        <h5>Vehiculos Detenidos <span class="mandatory">*</span></h5>
+                        <input type="number" placeholder="0" id="VehiculosDetenidos">
+                    </div>
+                    <div class="col-lg-4 pr10">
+                        <h5>Mercancia Retenida</h5>
+                        <input type="text" placeholder="MercanciaRetenida" id="MercanciaRetenida">
+                    </div>
+
+                </div>
+
+
+                <div class="multiple-input-wrap d-flex">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button id="btn_agregar_operacionesOperaciones" class="btn accent-btn" style="background-color:var(--green-btn);" type="button">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarOperacionesRealizadas">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <!--item final-->
+            @*DIRECTIVA 2a - CENTROS HOSPITALARIOS COVID 19*@
+
+            <div class="container div_HOSPITALARIOS_COVID19 mt-3">
+
+                <div class="multiple-input-wrap text-center">
+                    <h4>Centros hospitalarios publicos y privados disponibles para casos covid91 a nivel nacional, con sus respectivas camas y ventiladores</h4>
+                </div>
+                <div class="multiple-input-wrap text-center">
+                    <h4>Centros Publicos</h4>
+                </div>
+                <div class="multiple-input-wrap" style="background-color:var(--light-bg);border:1px solid var(--border); border-radius:9px;">
+                    <div class="multiple-input-wrap">
+                        <h5>Centros</h5>
+                        <div class="col-lg-3">
+                            <input type="number" id="TotalCentrosPublicos">
+                        </div>
+                    </div>
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Camas</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalCamasPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadasCamasPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleCamasPublico">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Camas UCI</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalUciPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadaUciPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleUciPublico">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Ventiladores</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalVentiladorPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadoVentiladorPublico">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleVentiladorPublico">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="multiple-input-wrap text-center mt-3">
+                    <h4>Centros Privados</h4>
+                </div>
+                <div class="multiple-input-wrap" style="background-color:var(--light-bg);border:1px solid var(--border); border-radius:9px;">
+                    <div class="multiple-input-wrap">
+                        <h5>Centros</h5>
+                        <div class="col-lg-3">
+                            <input type="number" id="totalCentrosPrivados">
+                        </div>
+                    </div>
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Camas</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalCamasPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadoCamasPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleCamasPrivado">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Camas UCI</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalUciPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadoUciPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleUciPrivado">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-g-lg-4">
+                            <h5>Cantidad de Ventiladores</h5>
+                            <div class="d-flex">
+                                <div class="col-xs-4 pr10">
+                                    <h5>Total</h5>
+                                    <input type="number" name="" id="totalVentiladorPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Ocup.</h5>
+                                    <input type="number" name="" id="ocupadoVentiladorPrivado">
+                                </div>
+                                <div class="col-xs-4 pr10">
+                                    <h5>Disp.</h5>
+                                    <input type="number" name="" id="disponibleVentiladorPrivado">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarHospitalariosCovid19">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+            @*CENTROS DE AISLAMIENTO DE LAS FF.AA. CASOS COVID19 A NIVEL NACIONAL*@
+            <div class="container div_CENTROSDEAISLAMIENTO_COVID19 mt-3">
+
+                <div class="multiple-input-wrap text-center">
+                    <h4>Centros de aislamiento de las FFAA casos covid-19 a nivel nacional</h4>
+                </div>
+                <div class="multiple-input-wrap" style="background-color: var(--light-bg);border-radius: 9px;border:1px solid var(--border);">
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-3 pr10">
+                            <h5>Lugar</h5>
+                            <select name="" id="provinciaCentrodeAislamiento">
+                                <option value="x" selected disabled>Seleccione provincia</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Centro</h5>
+                            <input type="text" placeholder="Nombre del centro..." id="nombreCentroAislamiento">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Personal</h5>
+                            <select name="" id="personalCentrosAislamientos">
+                                <option value="x" selected disabled>Seleccione</option>
+                                <option value="1">Civil</option>
+                                <option value="2">Militar</option>
+                                <option value="3">Recluso</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Camas Habilitadas</h5>
+                            <input type="number" placeholder="0" id="CamasHabilitadasCentroAislamiento">
+                        </div>
+                    </div>
+
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-3 pr10">
+                            <h5>Camas Ocupadas</h5>
+                            <input type="number" placeholder="0" id="CamasOcupadasCentroAislamiento">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Camas Disponibles</h5>
+                            <input type="number" placeholder="0" id="CamasDisponiblesCentroAislamiento">
+                        </div>
+                    </div>
+
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <button class="btn accent-btn" type="button" id="agregarCentroAislamiento" style="background-color: var(--green-btn);border-color: var(--green-btn);">Agregar Centro</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="multiple-input-wrap">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" rowspan="2">Provincia</th>
+                                <th scope="col" rowspan="2">Centro</th>
+                                <th scope="col" rowspan="2">Personal</th>
+                                <th colspan="3" class="text-center">Camas</th>
+                            </tr>
+                            <tr>
+
+                                <th scope="col">Habilitadas</th>
+                                <th scope="col">Ocupadas</th>
+                                <th scope="col">Disponibles</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCentrosAislamiento">
+                            <tr>
+                                <th scope="row">Sin datos</th>
+                                <td>Sin datos</td>
+                                <td>Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="multiple-input-wrap d-flex mt-mb-20">
+                        <div class="col-lg-12 d-flex justify-content-end mt-3">
+                            <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                            <button class="btn accent-btn" type="button" id="_guardarCentrosDeAislamientos">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            @*LLEGADA DE VUELOS*@
+            <div class="container div_LLEGADA_VUELOS mt-3">
+
+                <div class="multiple-input-wrap text-center mb-4">
+                    <h4>Llegada de vuelos y resultados de las pruebas rapidas realizadas por el MIDE, en los diferentes aeropuertos internacionales a nivel nacional</h4>
+                </div>
+
+                <div class="multiple-input-wrap" style="background-color: var(--light-bg);border: 1px solid var(--border);border-radius: 9px;">
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-3 pr10">
+                            <h5>Aeropuerto</h5>
+                            <select name="" id="aeroPuertoLlegadaVuelos">
+                                <option value="x" selected disabled>Seleccione</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Tipo de Prueba</h5>
+                            <select name="" id="tipoPruebaLlegadaVuelo">
+                                <option value="x" selected disabled>Seleccione</option>
+                                <option value="Aliento">Aliento</option>
+                                <option value="Anal">Anal</option>
+                                <option value="Nasal">Nasal</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Cantidad de Vuelos</h5>
+                            <input type="number" placeholder="0" id="cantidadVuelos">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>Cantidad Pasajeros</h5>
+                            <input type="number" placeholder="0" id="cantidadPasajerosLlegadaVuelos">
+                        </div>
+                    </div>
+
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-3 pr10">
+                            <h5>Pruebas Presentadas</h5>
+                            <input type="number" placeholder="0" id="pruebasPCR">
+                        </div>
+                        <div class="col-lg-2 pr10">
+                            <h5>Realizadas</h5>
+                            <input type="number" placeholder="0" id="pruebasRealizadas">
+                        </div>
+                        <div class="col-lg-2 pr10">
+                            <h5>Positivas</h5>
+                            <input type="number" placeholder="0" id="pruebasPositivas">
+                        </div>
+                        <div class="col-lg-2 pr10">
+                            <h5>Sospechosos</h5>
+                            <input type="number" placeholder="0" id="pruebasSospechosos">
+                        </div>
+                        <div class="col-lg-2 pr10">
+                            <h5>Negativas</h5>
+                            <input type="number" placeholder="0" id="pruebasNegativas">
+                        </div>
+                    </div>
+
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-3 pr10">
+                            <h5>% Pruebas Presentadas</h5>
+                            <input type="number" placeholder="0" id="porcentajePresentadas">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>% Positivas</h5>
+                            <input type="number" placeholder="0" id="porcentajePositivas">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>% Sospechosos</h5>
+                            <input type="number" placeholder="0" id="porcentajeSospechosos">
+                        </div>
+                        <div class="col-lg-3 pr10">
+                            <h5>% Negativas</h5>
+                            <input type="number" placeholder="0" id="porcentajeNegativas">
+                        </div>
+                    </div>
+
+                    <div class="multiple-input-wrap d-flex mt-mb-20">
+                        <div class="col-lg-12 d-flex justify-content-end mt-3">
+                            <button class="btn accent-btn" type="button" id="_agregarLLEGADA_VUELOS" style="background-color: var(--green-btn);">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="multiple-input-wrap">
+                    <table class="table table-bordered table-hover table-responsive" style="font-size: 10px;">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" scope="col">Aeropuertos</th>
+                                <th rowspan="2" scope="col">Tipo de Prueba</th>
+                                <th rowspan="2" scope="col">Cantidad de Vuelos</th>
+                                <th rowspan="2">Pasajeros</th>
+                                <th rowspan="2">Pruebas Presentadas (PCR)</th>
+                                <th class="text-center" colspan="4">Cantidad de Pruebas</th>
+                                <th rowspan="2">% Pruebas Presentadas</th>
+                                <th rowspan="2">% Realizadas</th>
+                                <th rowspan="2">% Positivas</th>
+                                <th rowspan="2">% Sospechosos</th>
+                            </tr>
+                            <tr>
+                                <th>Realizadas</th>
+                                <th>Positivas</th>
+                                <th>Sospechosos</th>
+                                <th>Negativas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaLlegadaVuelos">
+                            <tr>
+                                <th scope="row">Sin datos</th>
+                                <td>Sin datos</td>
+                                <td>Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                                <td class="text-center">Sin datos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end mt-3">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNotaLLEGADA_VUELOS">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container DIV_NUEVOSCASOS_HOY mt-3">
+                <div class="multiple-input-wrap text-center mb-4">
+                    <h4>Nuevos Casos el Dia de Hoy</h4>
+                </div>
+
+                <div class="multiple-input-wrap">
+                    <div class="multiple-input-wrap d-flex">
+                        <div class="col-lg-4 pr10">
+                            <h5>Confirmados</h5>
+                            <input type="number" placeholder="0" id="CasosConfirmadosHoy">
+                        </div>
+                        <div class="col-lg-4 pr10">
+                            <h5>Fallecidos</h5>
+                            <input type="number" placeholder="0" id="CasosFallecidosHoy">
+                        </div>
+                        <div class="col-lg-4 pr10">
+                            <h5>Nuevas Pruebas</h5>
+                            <input type="number" placeholder="0" id="NuevasPruebasHoy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end mt-3">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNotaNuevosCasosHoy">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container DIV_INTERVENCIONES_MIGRATORIA mt-3">
+
+                <div class="multiple-input-wrap text-center mb-4">
+                    <h4>Intervenciones Migratorias y Retorno Voluntario</h4>
+                </div>
+                <div class="multiple-input-wrap" style="background-color:var(--light-bg);">
+                    <div class="multiple-input-wrap">
+                        <div class="multiple-input-wrap d-flex">
+                            <div class="col-lg-3 pr10">
+                                <h5>Institucion/Unidad</h5>
+                                <select name="" id="Ejes_Intervencion">
+                                </select>
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>Plan/Directiva</h5>
+                                <select name="" id="directivaIntervenciones">
+                                    <option value="x" selected disabled>Seleccione</option>
+                                    <option value="Operaciones">Operaciones</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>Lugar</h5>
+                                <select id="provinciasIntervenciones">
+                                    <option value="x">Seleccione</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>Nacionalidad</h5>
+                                <select name="" id="paisesIntervencion">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="multiple-input-wrap d-flex">
+                            <div class="col-lg-3 pr10">
+                                <h5>Retorno Voluntario</h5>
+                                <input type="number" placeholder="0" id="retornoVoluntario">
+                            </div>
+                            <div class="col-lg-2 pr10">
+                                <h5>Hombres</h5>
+                                <input type="number" placeholder="0" id="hombresIntervenciones">
+                            </div>
+                            <div class="col-lg-2 pr10">
+                                <h5>Mujeres</h5>
+                                <input type="number" placeholder="0" id="mujeresIntervenciones">
+                            </div>
+                            <div class="col-lg-2 pr10">
+                                <h5>Niños</h5>
+                                <input type="number" placeholder="0" id="ninosIntervenciones">
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>Total</h5>
+                                <input type="number" placeholder="0" id="totalIntervenciones">
+                            </div>
+                        </div>
+                        <div class="multiple-input-wrap d-flex mt-mb-20">
+                            <div class="col-lg-12 d-flex justify-content-end mt-3">
+                                <button class="btn accent-btn" type="button" id="agregarbtnIntervenciones" style="background-color:var(--green-btn);">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap">
+                    <!--tabla de renderizado de nota-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" scope="col">Institucion/Unidad</th>
+                                    <th rowspan="2" scope="col">Plan/Directiva</th>
+                                    <th rowspan="2" scope="col">Lugar</th>
+                                    <th rowspan="2" scope="col">Nacionalidad</th>
+                                    <th rowspan="2">Retorno Voluntario</th>
+                                    <th class="text-center" colspan="4">Personal Detenido</th>
+                                </tr>
+                                <tr>
+                                    <th>Hombres</th>
+                                    <th>Mujeres</th>
+                                    <th>Ninos</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaIntervenciones">
+                                <tr>
+                                    <th scope="row">Sin datos</th>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end mt-3">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNotaIntervenciones">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container DIV_RELACION_INSTITUCION mt-3">
+
+                <div class="multiple-input-wrap text-center mb-4">
+                    <h4>Relacion de Personal y Vehiculos de los Puntos Fijos, Retenes y Patrullas</h4>
+                    <h5>Relacion por Institucion y Comando Conjunto</h5>
+                </div>
+                <div class="multiple-input-wrap" style="background-color:var(--light-bg);">
+                    <div class="multiple-input-wrap">
+                        <div class="multiple-input-wrap d-flex">
+                            <div class="col-lg-3 pr10">
+                                <h5>Institucion</h5>
+                                <select name="" id="institucionRelacionPersonal">
+                                    <option value="x" selected disabled>Seleccione</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="multiple-input-wrap d-flex">
+                            <div class="col-lg-8 pr10">
+                                <h5>Personal</h5>
+                                <div class="d-flex">
+                                    <div class="col-lg-3 pr10">
+                                        <h5>CCM</h5>
+                                        <input type="number" placeholder="0" id="ccm">
+                                    </div>
+
+                                    <div class="col-lg-3 pr10">
+                                        <h5>CCN</h5>
+                                        <input type="number" placeholder="0" id="ccn">
+                                    </div>
+
+                                    <div class="col-lg-3 pr10">
+                                        <h5>CCS</h5>
+                                        <input type="number" placeholder="0" id="ccs">
+                                    </div>
+
+                                    <div class="col-lg-3 pr10">
+                                        <h5>CCE</h5>
+                                        <input type="number" placeholder="0" id="cce">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>Vehiculos</h5>
+                                <div class="d-flex">
+                                    <div class="col-lg-6 pr10">
+                                        <h5>Automoviles</h5>
+                                        <input type="number" placeholder="0" id="vehiculosRelacionPersonal">
+                                    </div>
+
+                                    <div class="col-lg-6 pr10">
+                                        <h5>Motocicletas</h5>
+                                        <input type="number" placeholder="0" id="motocicletasRelacionPersonal">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="multiple-input-wrap d-flex mt-mb-20">
+                            <div class="col-lg-12 d-flex justify-content-end mt-3">
+                                <button class="btn accent-btn" type="button" id="btnAgregarRelacionPersonal" style="background-color:var(--green-btn);">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap">
+                    <!--tabla de renderizado de nota-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" scope="col" class="text-center">Personal</th>
+                                    <th colspan="2" scope="col" class="text-center">Transporte</th>
+                                </tr>
+                                <tr>
+                                    <th>Institucion</th>
+                                    <th class="text-center">CCM</th>
+                                    <th class="text-center">CCN</th>
+                                    <th class="text-center">CCS</th>
+                                    <th class="text-center">CCE</th>
+                                    <td class="text-center">Vehiculos</td>
+                                    <td class="text-center">Motocicletas</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaRelacionPersonal">
+                                <tr>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                    <td class="text-center">Sin datos</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end mt-3">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNota">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container DIV_Interdicciones_Migratorias mt-3">
+
+                <div class="multiple-input-wrap text-center mb-4">
+                    <h4>Interdicciones migratorias con relacion a la directiva 22(2020)</h4>
+                </div>
+                <div class="multiple-input-wrap" style="background-color:var(--light-bg);">
+                    <div class="multiple-input-wrap">
+                        <div class="multiple-input-wrap d-flex">
+                            <div class="col-lg-3 pr10">
+                                <h5>Provincia</h5>
+                                <select name="" id="provinciaInterdicciones">
+                                    <option value="x" selected disabled>Seleccione</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>ERD</h5>
+                                <input type="number" placeholder="0" id="ERD">
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>FTCI - Cerco Fronterizo</h5>
+                                <input type="number" placeholder="0" id="FTCI">
+                            </div>
+                            <div class="col-lg-3 pr10">
+                                <h5>CESFRONT</h5>
+                                <input type="number" placeholder="0" id="CESFRONT">
+                            </div>
+                        </div>
+                        <div class="multiple-input-wrap d-flex mt-mb-20">
+                            <div class="col-lg-12 d-flex justify-content-end mt-3">
+                                <button class="btn accent-btn" type="button" id="agregarbtnInterdiccionesMigratorias" style="background-color:var(--green-btn);">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap">
+                    <!--tabla de renderizado de nota-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Provincia</th>
+                                    <td>ERD</td>
+                                    <td>FTCI - Cerco Fronterizo</td>
+                                    <td>CESFRONT</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaInterdiccionesMigratorias">
+                                <tr>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                    <td>Sin datos</td>
+                                </tr>
+                            </tbody>                           
+                        </table>
+                    </div>
+                </div>
+
+                <div class="multiple-input-wrap d-flex mt-mb-20">
+                    <div class="col-lg-12 d-flex justify-content-end mt-3">
+                        <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                        <button class="btn accent-btn" type="button" id="_guardarNotaInterdiccionesMigratorias">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        @*DIV ITEM*@
+
+
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="~/Scripts/scripts/sweetalert.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Tablas.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Operaciones_realizadas.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Hospitalarios_covid19.js"></script>>
+<script src="~/Scripts/scripts/C5i/Tabla/Centros_Aislamientos.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Llegada_vuelos.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/NuevosCasos_Hoy.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Intervenciones.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Relacion_Institucion.js"></script>
+<script src="~/Scripts/scripts/C5i/Tabla/Interdicciones_migratorias.js"></script>
