@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="helpers\GetNota.cs" />
     <Compile Include="helpers\ObtenerHora.cs" />
     <Compile Include="helpers\Respuesta.cs" />
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\aeropuerto.cs">

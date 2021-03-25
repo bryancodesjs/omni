@@ -1,87 +1,132 @@
-﻿@{
+﻿
+@{ 
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var resultado = ViewBag.Resultado;
-    var texto = ViewBag.texto;
-    var total = ViewBag.total;
+    var texto = ViewBag.Texto;
+    var textonulo = ViewBag.Texto;
+    var total = ViewBag.Total;
+
 }
 
-<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-5">
-    <a class="mb-3" href="/C5i"><h3><i class="bi bi-arrow-left"></i> Panel Principal</h3></a>
-    <h2>Busqueda</h2>
-    <div class="d-flex justify-content-between">
-        <div class="col-lg-6 no-bootstrap-padding d-flex">
+<h2>Search</h2>
+
+
+<div class="render c5i-render">
+    <!-- titulo de vista -->
+    <div class="render-title">
+
+        <div class="search d-flex-center">
             @using (Html.BeginForm("Search", "c5i", FormMethod.Post))
             {
-                <input class="full-width pl-3 mr-2" id="search" type="text" name="texto" spellcheck="true" placeholder="Buscar dentro de este diario...">
-                <button class="btn btn-success btn-buscar" type="submit" id="searchButton"><i class="bi bi-search"></i>  Buscar</button>
+<input id="search" name="texto" type="text" spellcheck="true" placeholder="Buscar notas...">
 
-            }
+                <button class="btn buscar-btn" id="searchButton">BUSCAR</button>            }
         </div>
     </div>
-</section>
-
-<section class="d-flex responsive-x-padding">
-    <hr class="view-hr">
-</section>
-
-<div class="d-flex responsive-x-padding flex-column">
     <h5><strong>Resultados Encontrados:</strong> &nbsp;<span>@total</span></h5>
     <div class="resultados-wrap ml50">
         <hr />
-        <!--bucle-->
 
-        @foreach (var item in resultado)
-        {
-            <div id="notaResumida" class="border rounded w-100 p-4 mt-3 background-primary">
-                <div class="nota">
-                    <div class="d-flex">
-                        <div class="col-lg-8 no-bootstrap-padding">
-                            <h3 class="mb-4">
-                                <b>
-                                    @{
-                                        string asunto = item.asunto;
-                                        var detalle = item.detalles.Value;
+        <!--item inicio-->
+      @if (resultado != null)
+      {
 
-                                    }
-                                    @Html.Raw(asunto.Replace(texto, "<span style='background:yellow;Color:black'>" + texto + "</span>"))
-                                </b>
-                            </h3>
-                        </div>
-                        <div class="col-lg-4 no-bootstrap-padding d-flex justify-content-end">
-                            <!--@if (item.estadoDiario != "1" && Session["Acceso"].ToString() == "1")
-                            {
-                                <a class="boton-rapido hover-accent border-right" title="Editar esta nota" href="/C5i/EditarNota/@item.id_nota"><i class="lni lni-pencil"></i></a>
-                                <button class="boton-rapido hover-cancel" type="button" id="EliminarNota" title="Eliminar esta nota" data-id="@item.id_nota"><b>X</b></button>
-                            }-->
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between h-100">
+          for (int i = 0; i < resultado.Count; i++)
+          {
+              if (resultado[i].Count > 0)
+              {
+                  var Nombres = resultado[i][0].id_nota;
 
-                        <div class="col-lg-8 flex-column d-flex justify-content-between no-bootstrap-padding">
-                            <p>
-                                @Html.Raw(detalle.Replace(texto, "<span style='background:yellow;Color:black'>" + texto + "</span>"))
-                            </p>
-                            <div class="d-flex justify-content-start flex-column">
-                                <h4 class="secondary-text"><span class="mini-subtitle"><i class="bi bi-geo-alt"></i> @item.direccion</span>, @item.sector, @item.municipio, @item.provincia</h4>
-                                <h4 class="secondary-text"><i class="bi bi-clock"></i> @item.hora</h4>
-                            </div>
-                            <!---<h5 class="mini-subtitle">Escribiente: <span id="nombreEscribiente">@item.rango. @item.nombres @item.apellidos., @item.institucion</span></h5>-->
-                        </div>
 
-                        <div class="col-lg-4">
-                            <div class="diario-img-wrap overflow-hidden w-100 h-100">
-                                <img class="w-100" src="~/img/blank-img.png" />
-                            </div>
-                        </div>
 
-                    </div>
+
+
+            <div id="notaResumida" class="item">
+                                <div class="nota">
+                                    <div class="notaSection d-flex justify-content-end">
+                                        <div class="boton-rapido-wrap botones-nota-wrap slide-in-top" id="wrapDeBotones">
+                                            <button class="boton-rapido hover-accent border-right" title="Imprimir esta nota">Imprimir</button>
+
+                                            <a class="boton-rapido hover-accent border-right" title="Editar esta nota" href="/c5i/EditarNota/@resultado[i][0].id_nota"><i class="lni lni-pencil"></i></a>
+                                            <button class="boton-rapido hover-cancel" type="button" id="EliminarNota" title="Eliminar esta nota" data-id="@resultado[i][0].id_nota;"><b>X</b></button>
+
+                                        </div>
+                                    </div>
+                <div class="notaSection d-flex justify-content-between">
+                         <div class="asunto-wrap text-left">
+                                <div class="no-hora-wrap"><h5 id="numeroYHora">No.<span> </span> - <span id="horaNota">Hora:</span></h5></div>
+                                    <h4 id="asuntoDeNota">
+                                     @{ string asunto = resultado[i][0].asunto;
+                                         var asunto2 = resultado[i][0].asunto;
+                                         var detalle2 = resultado[i][0].detalles;
+                                         var detalle = resultado[i][0].detalles;
+                                         string[] Dpuerta = detalle2.Split(' ');
+                                         string[] Apuerta = asunto2.Split(' ');
+                                         if (texto == null && textonulo != null)
+                                         { 
+
+                                         foreach (var item in Dpuerta)
+                                         {
+
+                                             if (item == textonulo)
+                                             {
+                                                 texto = Dpuerta.ToString();
+                                                 detalle.Replace(Dpuerta, "<span style='background:yellow;Color:white'>" + Dpuerta + "</span>");
+
+                                             }
+                                         }
+                        } 
+                                        }
+
+                                     @Html.Raw(asunto.Replace(texto, "<span style='background:yellow;Color:white'>" + texto + "</span>"))
+
+
+
+
+                                 </h4>
+                                 <h5>
+                                    <span class="destacado" id="provincia">
+                                        <i class="lni lni-map-marker"></i>  Provincia:@resultado[i][0].provincia - Municipio: @resultado[i][0].municipio - Sector: @resultado[i][0].sector
+                                    </span>
+
+                                 </h5>
+
+                                <h4>
+                                    <span class="mini-subtitle">@resultado[i][0].direccion</span>
+                                </h4>
+
+                          </div>
+
                 </div>
-            </div>
-        }
+                            <div class="notaSection">
+                                <h4>Descripcion:</h4>
+                                <p>
+
+                                    @Html.Raw(detalle.Replace(texto, "<span style='background:yellow;Color:white'>" + texto + "</span>"))
+                                </p>
+                            </div>
+                            <div class="notaSection">
+                                <h5 class="mini-subtitle">Escribiente: <span id="nombreEscribiente">rango nombres apellidos., institucion</span></h5>
+                            </div>
+                    </div>
+
+
+                </div>
+                                }
+
+                            }
+                        }
+                        else
+                        {
+
+                            <h1>NO EXISTE</h1>
+
+
+                        }
+        <!--FINAL-->
     </div>
 </div>
-
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script src="~/Scripts/scripts/sweetalert.js"></script>

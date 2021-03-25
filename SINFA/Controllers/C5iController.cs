@@ -6,15 +6,18 @@ using SINFA.Models.C5i.DB_SQL_EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 
 namespace SINFA.Controllers
 {
@@ -273,11 +276,46 @@ namespace SINFA.Controllers
         
         public ActionResult Diario(int id, string fecha, string texto=null)
         {
+            ViewBag.Fecha = fecha;
             int codeDiario = id;
-            if (texto==null)
+            dynamic jsonSerializerTabla;
+            dynamic jsonTabla;
+            if (texto == null)
             {
                 using (DBEntities db = new DBEntities())
                 {
+
+                    //--------- CODIGOS PARA LAS TABLAS ------------------------------------------------------------
+
+                    var tablas = (from t in db.seguimientocasospositivoscovids
+                                  join u in db.usuarios on t.id_usuario equals u.id_usuario
+                                  join p in db.Provincias on t.id_provincia equals p.Id
+                                  join i in db.institucions on u.id_institucion equals i.id_institucion
+                                  join r in db.rangoes on u.id_rango equals r.id_rango
+                                  where t.id_diario == id
+                                  select new
+                                  {
+                                      t.id_diario,
+                                      t.equipos,
+                                      t.visitas_realizadas,
+                                      t.visitas_acomuladas,
+                                      t.fallecidos,
+                                      t.traslados,
+                                      t.fecha,
+                                      usuario = r.Nombre + " " + u.nombres + " " + u.apellidos + " " + i.nombre,
+                                      provincia = p.Nombre
+                                  }
+                                  ).ToList();
+
+                    jsonSerializerTabla = JsonConvert.SerializeObject(tablas);
+                    jsonTabla = JsonConvert.DeserializeObject<dynamic>(jsonSerializerTabla);
+
+                    ViewBag.Tablas = jsonTabla;
+
+
+
+
+
                     //--------- CODIGOS PARA NOTAS ------------------------------------------------------------
                     var result = (from n in db.notas
                                   join u in db.usuarios on n.id_usuario equals u.id_usuario
@@ -314,72 +352,247 @@ namespace SINFA.Controllers
                     ViewBag.IdDiario = id;
                     ViewBag.Fecha = fecha;
                     ViewBag.codigoDiario = codeDiario;
-                    //-----------------------------------------------------------------------------------------
 
-                    //--------- CODIGOS PARA LAS TABLAS ------------------------------------------------------------
+                    if (result.Count == 0)
+                    {
 
-                    var tablas = (from t in db.seguimientocasospositivoscovids
-                                  join u in db.usuarios on t.id_usuario equals u.id_usuario
-                                  join p in db.Provincias on t.id_provincia equals p.Id
-                                  join i in db.institucions on u.id_institucion equals i.id_institucion
-                                  join r in db.rangoes on u.id_rango equals r.id_rango
-                                  where t.id_diario == id
-                                  select new
-                                  {
-                                      t.id_diario,
-                                      t.equipos,
-                                      t.visitas_realizadas,
-                                      t.visitas_acomuladas,
-                                      t.fallecidos,
-                                      t.traslados,
-                                      t.fecha,
-                                      usuario = r.Nombre + " " + u.nombres + " " + u.apellidos + " " + i.nombre,
-                                      provincia = p.Nombre
-                                  }
-                                  ).ToList();
+                        ViewBag.Elements = jsonIndex;
+                        ViewBag.IdDiario = id;
+                        ViewBag.Fecha = fecha;
+                        ViewBag.codigoDiario = codeDiario;
 
-                    dynamic jsonSerializerTabla = JsonConvert.SerializeObject(tablas);
-                    dynamic jsonTabla = JsonConvert.DeserializeObject<dynamic>(jsonSerializerTabla);
+                        return View();
 
-                    ViewBag.Tablas = jsonTabla;
-                   
+                    }
+
+
+
+
                 }
-                    //----------------------------------------------------------------------------------------------
-             }
-            else if (texto != null && id>0)
-                {
-                DBEntities db = new DBEntities();
-                //TABLE LOADING
-                var tablas = CargarTablas(id);
-                dynamic jsonSerializerTabla = JsonConvert.SerializeObject(tablas);
-                dynamic jsonTabla = JsonConvert.DeserializeObject<dynamic>(jsonSerializerTabla);
-                ViewBag.Tablas = jsonTabla;
-                
-                //consulta notas en el diario
-                var result = Resultados(texto, id);
-                dynamic jsonSerializerIndex = JsonConvert.SerializeObject(result);
-                dynamic jsonIndex = JsonConvert.DeserializeObject<dynamic>(jsonSerializerIndex);
-
-                //Obtener Fecha del Diario
-                var fdate = db.diarios.Where(a => a.id_diario == id)
-                    
-                    .Select(s => s.fecha).FirstOrDefault();
-                  
-                ViewBag.Elements = jsonIndex;
-                ViewBag.IdDiario = id;
-                ViewBag.Fecha = fdate;
-                ViewBag.texto = texto;
-                ViewBag.codigoDiario = codeDiario;
+                //----------------------------------------------------------------------------------------------
             }
-            else if(texto=="")
+
+
+            else if (texto != null && id > 0)
             {
 
-                return Redirect("/c5i/index");
+                ViewBag.IdDiario = id;
+
+                ViewBag.codigoDiario = codeDiario;
+
+                string TextoBuscado;
+                string TextoEncontrado;
+                string Acentos;
+
+                var re = texto.Trim();
+                if (re.Length > 0)
+                {
+
+                    List<dynamic> lstBuscar = new List<dynamic>();
+                    using (DBEntities db = new DBEntities())
+                    {
+
+                        //-----------------------------------------------------------------------------------------
+
+                        //--------- CODIGOS PARA LAS TABLAS ------------------------------------------------------------
+
+                        var tablas = (from t in db.seguimientocasospositivoscovids
+                                      join u in db.usuarios on t.id_usuario equals u.id_usuario
+                                      join p in db.Provincias on t.id_provincia equals p.Id
+                                      join i in db.institucions on u.id_institucion equals i.id_institucion
+                                      join r in db.rangoes on u.id_rango equals r.id_rango
+                                      where t.id_diario == id
+                                      select new
+                                      {
+                                          t.id_diario,
+                                          t.equipos,
+                                          t.visitas_realizadas,
+                                          t.visitas_acomuladas,
+                                          t.fallecidos,
+                                          t.traslados,
+                                          t.fecha,
+                                          usuario = r.Nombre + " " + u.nombres + " " + u.apellidos + " " + i.nombre,
+                                          provincia = p.Nombre
+                                      }
+                                      ).ToList();
+
+                        jsonSerializerTabla = JsonConvert.SerializeObject(tablas);
+                        jsonTabla = JsonConvert.DeserializeObject<dynamic>(jsonSerializerTabla);
+
+                        ViewBag.Tablas = jsonTabla;
+                       
+                        var text = (from n in db.notas
+                                    where n.id_diario != null && n.eliminado != 1 && n.detalles != null && n.asunto != null && n.id_usuario != null &&
+                                   n.asunto.Contains(texto) || n.detalles.Contains(texto)
+                                    select n).ToList();
+                        
+
+
+                        if (text != null)
+                        {
+                            foreach (var itemCodigo in text)
+                            {
+                                int Codig = (int)itemCodigo.id_diario;
+                                int codigo = (int)itemCodigo.id_nota;
+                                if (Codig == id)
+                                {
+
+
+
+                                    using (DBEntities db3 = new DBEntities())
+                                    {
+                                        var nota = (from n in db3.notas
+                                                    join u in db3.usuarios on n.id_usuario equals u.id_usuario
+                                                    join i in db3.institucions on u.id_institucion equals i.id_institucion
+                                                    join r in db3.rangoes on u.id_rango equals r.id_rango
+                                                    join s in db3.Sectors on n.id_sector equals s.IdSector
+                                                    join p in db3.Provincias on n.id_provincia equals p.Id
+                                                    join m in db3.Municipios on n.id_municipio equals m.IdMunicipio
+
+                                                    where n.id_nota == codigo && n.eliminado == 0 && m.IdProvincia == p.Id && s.IdProvincia == p.Id && s.IdMunicipio == m.IdMunicipio
+                                                    select new GetNota
+                                                    {
+                                                        id_nota = n.id_nota,
+                                                        id_diario = (int)n.id_diario,
+                                                        nombres = u.nombres,
+                                                        apellidos = u.apellidos,
+                                                        asunto = n.asunto,
+                                                        id_provincia = (int)n.id_provincia,
+                                                        provincia = p.Nombre,
+                                                        id_municipio = (int)n.id_municipio,
+                                                        municipio = m.Nombre,
+                                                        id_sector = (int)n.id_sector,
+                                                        sector = s.Nombre,
+                                                        detalles = n.detalles,
+                                                        direccion = n.direccion,
+                                                        fecha = (DateTime)n.fecha,
+                                                        hora = (TimeSpan)n.hora,
+                                                        eliminado = (int)n.eliminado,
+                                                        institucion = i.nombre,
+                                                        rango = r.Nombre
+                                                    }).ToList();
+
+
+
+                                        lstBuscar.Add(nota);
+
+                                    }
+                                    ViewBag.Resultado = lstBuscar;
+
+
+
+                                    TextoBuscado = RemoveAccentsWithNormalization(texto.ToLower());
+
+                                    foreach (var items in text)
+                                    {
+                                        string detallex = RemoveAccentsWithNormalization(items.detalles.ToLower());
+                                        string asuntox = RemoveAccentsWithNormalization(items.asunto.ToLower());
+
+
+                                        bool t = detallex.Contains(TextoBuscado) || asuntox.Contains(TextoBuscado);
+                                        if (t == true)
+                                        {
+
+                                            int posicionD = -1;
+                                            int posicionA = -1;
+                                            string mitexto = "";
+                                            posicionD = detallex.IndexOf(TextoBuscado);
+                                            posicionA = asuntox.IndexOf(TextoBuscado);
+
+
+                                            if (posicionD == -1 && posicionA == -1)
+                                            {
+                                                ViewBag.Texto = texto;
+
+
+                                            }
+                                            else if (posicionD > -1 && posicionA == -1)
+                                            {
+                                                mitexto = items.detalles.Substring(posicionD, TextoBuscado.Length);
+
+                                                ViewBag.Texto = mitexto;
+
+                                            }
+                                            else if (posicionD == -1 && posicionA > -1)
+                                            {
+                                                mitexto = items.asunto.Substring(posicionA, TextoBuscado.Length);
+
+                                                ViewBag.Texto = mitexto;
+                                            }
+                                            else if (posicionD > -1 && posicionA > -1)
+                                            {
+                                                mitexto = items.detalles.Substring(posicionD, TextoBuscado.Length);
+
+                                                ViewBag.Texto = mitexto;
+
+                                            }
+                                            else
+                                            {
+                                                ViewBag.Texto = texto;
+
+                                            }
+
+                                        }
+
+
+
+                                    }
+
+
+
+
+
+
+
+
+                                   
+
+
+
+
+
+
+
+                                }
+                                else
+                                {
+
+                                    return View();
+                                }
+
+                            }
+
+
+
+                        
+
+
+                        }
+                        else
+                        {
+                            return View();
+
+                        }
+
+                        
+
+                    }
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+
+                }
+
 
             }
+            else
+            {
+                return RedirectToAction("Index");
 
+            }
             return View();
-
         }
 
         public JsonResult EliminarNota(int id)
@@ -566,36 +779,146 @@ namespace SINFA.Controllers
         [HttpPost]
         public ActionResult Search(string texto)
         {
-            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-            string busqueda = ti.ToTitleCase(texto);
-            using (DBEntities db = new DBEntities())
+          
+          string TextoBuscado;
+            var re = texto.Trim();
+            if (re.Length>0)
             {
-                var notas2 = (from n in db.notas
-                             join d in db.diarios on n.id_diario equals d.id_diario
-                       
-                      
-                        
-                             where n.eliminado.Value!=1 && n.asunto != null && n.detalles != null
-                             select new
-                             {
-                                 n.id_diario,
-                                 n.id_nota,
-                                 n.id_provincia,
-                                 n.detalles,
-                                 n.asunto,
-                                 n.fecha,
-                                 n.hora,
-                                 n.direccion
-                               
-                             }).ToList();
-                var notas = notas2.Where(n=>n.asunto.Contains(texto) || n.detalles.Contains(texto));
 
-                dynamic jsonSerializer = JsonConvert.SerializeObject(notas);
-                dynamic json = JsonConvert.DeserializeObject<dynamic>(jsonSerializer);
+                List<dynamic> lstBuscar = new List<dynamic>();
+                using (DBEntities db = new DBEntities())
+                {
 
-                ViewBag.Resultado = json;
-                ViewBag.texto = texto;
-                ViewBag.total = notas.Count();
+                    var text = (from n in db.notas
+                                where n.id_diario != null && n.eliminado != 1 && n.detalles != null && n.asunto != null && n.id_usuario != null &&
+                               n.asunto.Contains(texto) || n.detalles.Contains(texto)
+                                select n).ToList();
+
+                    if (text != null)
+                    {
+
+
+
+
+
+                        TextoBuscado = RemoveAccentsWithNormalization(texto.ToLower());
+
+                        foreach (var items in text)
+                        {
+                            string detallex = RemoveAccentsWithNormalization(items.detalles.ToLower());
+                            string asuntox = RemoveAccentsWithNormalization(items.asunto.ToLower());
+
+
+                            bool t = detallex.Contains(TextoBuscado) || asuntox.Contains(TextoBuscado);
+                            if (t == true)
+                            {
+
+                                int posicionD = -1;
+                                int posicionA = -1;
+                                string mitexto = "";
+                                posicionD = detallex.IndexOf(TextoBuscado);
+                                posicionA = asuntox.IndexOf(TextoBuscado);
+
+
+                                if (posicionD == -1 && posicionA == -1)
+                                {
+                                    ViewBag.Texto = texto;
+
+
+                                }
+                                else if (posicionD > -1 && posicionA == -1)
+                                {
+                                    mitexto = items.detalles.Substring(posicionD, TextoBuscado.Length);
+
+                                    ViewBag.Texto = mitexto;
+
+                                }
+                                else if (posicionD == -1 && posicionA > -1)
+                                {
+                                    mitexto = items.asunto.Substring(posicionA, TextoBuscado.Length);
+
+                                    ViewBag.Texto = mitexto;
+                                }
+                                else if (posicionD > -1 && posicionA > -1)
+                                {
+                                    mitexto = items.detalles.Substring(posicionD, TextoBuscado.Length);
+
+                                    ViewBag.Texto = mitexto;
+
+                                }
+                                else
+                                {
+                                    ViewBag.Texto = texto;
+
+                                }
+
+                            }
+
+                        }
+
+                        foreach (var item in text)
+                        {
+                            int codigo = item.id_nota;
+                            using (DBEntities db3 = new DBEntities())
+                            {
+                                var nota = (from n in db3.notas
+                                            join u in db3.usuarios on n.id_usuario equals u.id_usuario
+                                            join i in db3.institucions on u.id_institucion equals i.id_institucion
+                                            join r in db3.rangoes on u.id_rango equals r.id_rango
+                                            join s in db3.Sectors on n.id_sector equals s.IdSector
+                                            join p in db3.Provincias on n.id_provincia equals p.Id
+                                            join m in db3.Municipios on n.id_municipio equals m.IdMunicipio
+
+                                            where n.id_nota == codigo && n.eliminado == 0 && m.IdProvincia == p.Id && s.IdProvincia == p.Id && s.IdMunicipio == m.IdMunicipio
+                                            select new GetNota
+                                            {
+                                                id_nota = n.id_nota,
+                                                id_diario = (int)n.id_diario,
+                                                nombres = u.nombres,
+                                                apellidos = u.apellidos,
+                                                asunto = n.asunto,
+                                                id_provincia = (int)n.id_provincia,
+                                                provincia = p.Nombre,
+                                                id_municipio = (int)n.id_municipio,
+                                                municipio = m.Nombre,
+                                                id_sector = (int)n.id_sector,
+                                                sector = s.Nombre,
+                                                detalles = n.detalles,
+                                                direccion = n.direccion,
+                                                fecha = (DateTime)n.fecha,
+                                                hora = (TimeSpan)n.hora,
+                                                eliminado = (int)n.eliminado,
+                                                institucion = i.nombre,
+                                                rango = r.Nombre
+                                            }).ToList();
+
+
+
+                                lstBuscar.Add(nota);
+
+                            }
+
+                            ViewBag.Resultado = lstBuscar;
+                            return View();
+
+
+
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        return View();
+                    }
+
+                }
+               
+            }
+            else
+            {
+                return RedirectToAction("Index");
 
             }
 
@@ -794,5 +1117,20 @@ namespace SINFA.Controllers
             }            
         }
 
+
+        public static string RemoveAccentsWithNormalization(string inputString)
+        {
+            string normalizedString = inputString.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < normalizedString.Length; i++)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(normalizedString[i]);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(normalizedString[i]);
+                }
+            }
+            return (sb.ToString().Normalize(NormalizationForm.FormC));
+        }
     }
 }

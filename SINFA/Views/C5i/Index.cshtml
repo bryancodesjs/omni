@@ -11,7 +11,7 @@
             <!-- <i id="searchIcon" class="bi bi-search"></i> -->
             @using (Html.BeginForm("Search", "c5i", FormMethod.Post))
             {
-                <input class="full-width pl-3 mr-2" id="search" type="text" name="texto" spellcheck="true" placeholder="Buscar en todos los diarios...">
+                <input class="full-width pl-3 mr-2" id="search" type="text" name="texto"required spellcheck="true" placeholder="Buscar en todos los diarios...">
                 <button class="btn btn-success btn-buscar" type="submit" id="searchButton"><i class="bi bi-search"></i> Buscar</button>
 
             }
