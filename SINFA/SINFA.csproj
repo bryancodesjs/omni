@@ -674,6 +674,7 @@
     <Content Include="Views\C5i\Estadisticas.cshtml" />
     <Content Include="Views\C5i\Search.cshtml" />
     <Content Include="Views\C5i\NuevaTabla.cshtml" />
+    <Content Include="Views\C5i\Personal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

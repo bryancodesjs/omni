@@ -181,6 +181,12 @@ h4 {
     width: 134px;
     height: 134px;
 }
+.disabled-a {
+    color:var(--text-description);
+}
+.disabled-a:hover {
+    color:var(--danger);
+}
 /*animation properties*/
 .duration-500 {
     --animate-duration: 0.5s;

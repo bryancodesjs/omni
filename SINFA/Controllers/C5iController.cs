@@ -774,7 +774,11 @@ namespace SINFA.Controllers
                 return View();
 
         }
-
+        
+        public ActionResult Personal()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Search(string texto)

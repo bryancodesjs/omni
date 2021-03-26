@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Personal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-2 animate__animated animate__fadeInDown duration-500">
+    <h2>Gestion de Personal</h2>
+    <div class="d-flex justify-content-between">
+        <div class="col-lg-6 no-bootstrap-padding d-flex">
+        </div>
+        <div class="col-lg-4 d-flex justify-content-end no-bootstrap-padding">
+            <button class="btn btn-primary mr-2" type="button" id="nuevoDiario"><i class="bi bi-file-earmark-plus"></i> Agregar Nuevo Usuario</button>
+        </div>
+    </div>
+</section>
+
+<section class="d-flex responsive-x-padding animate__animated animate__fadeInUp duration-500 flex-column">
+    <div class="border rounded w-100 p-4 mt-3 background-primary ">
+        <h3 class="text-center mb-3 mt-4"><strong>Listado</strong></h3>
+        <table class="table  table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Rango</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Fecha Registro</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- for each print start -->
+                <tr>
+                    <td>Capitan</td>
+                    <td>Martin Perez</td>
+                    <td>Supervisor</td>
+                    <td>21/03/2020</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#">
+                                <div class="imprimir mr-4" title="Click para ver">
+                                    <h4><i class="bi bi-pencil"></i> Editar</h4>
+                                </div>
+                            </a>
+                            <a href="#" class="disabled-a">
+                                <div class="imprimir" title="Click para imprimir">
+                                    <h4><i class="bi bi-person-x-fill"></i> Deshabilitar</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- for each print end -->
+
+                <!-- eliminar siguiente <tr> una vez se agregue el for each -->
+                <tr>
+                    <td>Sargento</td>
+                    <td>Dario Tejada</td>
+                    <td>Escribiente</td>
+                    <td>21/03/2020</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#">
+                                <div class="imprimir mr-4" title="Click para ver">
+                                    <h4><i class="bi bi-pencil"></i> Editar</h4>
+                                </div>
+                            </a>
+                            <a href="#" class="disabled-a">
+                                <div class="imprimir" title="Click para imprimir">
+                                    <h4><i class="bi bi-person-x-fill"></i> Deshabilitar</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="d-flex responsive-x-padding animate__animated animate__fadeInUp duration-500">
+
+</section>
