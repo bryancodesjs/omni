@@ -27,9 +27,10 @@
 </section>
 
 <section class="d-flex responsive-x-padding mb-3 animate__animated animate__fadeInUp duration-500">
-    <div class="col-lg-1">Estado</div>
+    <div class="col-lg-1"></div>
     <div class="col-lg-2">Fecha <i class="bi bi-chevron-expand"></i></div>
-    <div class="col-lg-5">Escribiente <i class="bi bi-chevron-expand"></i></div>
+    <div class="col-lg-2">Estado <i class="bi bi-chevron-expand"></i></div>
+    <div class="col-lg-4">Escribiente <i class="bi bi-chevron-expand"></i></div>
     <div class="col-lg-3">Acciones</div>
 </section>
 
@@ -45,8 +46,10 @@
                     <div class="col-lg-1 pt-4 folder mb-3 d-flex align-items-center justify-content-center">
                         <i class="bi bi-unlock diario-icon"></i>
                     </div>
-                    <div class="col-lg-2 pt-4 mb-3 divider-r">
+                    <div class="col-lg-2 pt-4 mb-3 divider-r d-flex align-items-center">
                         <div class="fecha"><h4 id="fechaNota"><strong style="font-size: 19px;">@String.Format("{0:d/M/yyyy}", item.fecha)</strong></h4></div>
+                    </div>
+                    <div class="col-lg-2 pt-4 mb-3 divider-r d-flex align-items-center">
                         <div class="hora d-flex">
                             <h4 class="abierto" id="horaNota">Abierto</h4>
                             <div id="room"></div>
@@ -59,8 +62,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-lg-5 pt-4 mb-3 datosEscribienteWrap">
-                        <div class="fecha"><h4 id="">Escribiente</h4></div>
+                    <div class="col-lg-4 pt-4 mb-3 datosEscribienteWrap d-flex align-items-center">
                         <div class="hora"><h4 class="secondary-text" id="idEscribiente">@item.rango. @item.escribiente., @item.institucion</h4></div>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center">
@@ -87,15 +89,16 @@
                     <div class="col-lg-1 pt-4 mb-3 folder d-flex align-items-center justify-content-center">
                         <i class="bi bi-lock-fill diario-icon"></i>
                     </div>
-                    <div class="col-lg-2 pt-4 mb-3 divider-r">
+                    <div class="col-lg-2 pt-4 mb-3 divider-r d-flex align-items-center">
                         <div class="fecha"><h4 id="fechaNota" ><strong style="font-size: 19px;">@String.Format("{0:d/M/yyyy}", item.fecha)</strong></h4></div>
-                        <div class="hora">
+                    </div>
+                    <div class="col-lg-2 pt-4 mb-3 divider-r d-flex align-items-center">
+                        <div class="hora d-flex align-items-start flex-column justify-content-center">
                             <h4 id="horaNota" class="secondary-text">Apertura: @item.hora_apertura</h4>
                             <h4 id="horaNota" class="secondary-text">Cierre: @item.hora_cierre</h4>
                         </div>
                     </div>
-                    <div class="col-lg-5 pt-4 mb-3">
-                        <div class="fecha"><h4 id="">Escribiente</h4></div>
+                    <div class="col-lg-4 pt-4 mb-3 d-flex align-items-center">
                         <div class="hora"><h4 class="secondary-text" id="idEscribiente">@item.rango. @item.escribiente., @item.institucion</h4></div>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center">
