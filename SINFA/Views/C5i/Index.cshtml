@@ -46,7 +46,7 @@
                         <i class="bi bi-unlock diario-icon"></i>
                     </div>
                     <div class="col-lg-2 pt-4 mb-3 divider-r">
-                        <div class="fecha"><h4 id="fechaNota">Fecha: @String.Format("{0:d/M/yyyy}", item.fecha)</h4></div>
+                        <div class="fecha"><h4 id="fechaNota"><strong style="font-size: 19px;">@String.Format("{0:d/M/yyyy}", item.fecha)</strong></h4></div>
                         <div class="hora d-flex">
                             <h4 class="abierto" id="horaNota">Abierto</h4>
                             <div id="room"></div>
@@ -88,8 +88,11 @@
                         <i class="bi bi-lock-fill diario-icon"></i>
                     </div>
                     <div class="col-lg-2 pt-4 mb-3 divider-r">
-                        <div class="fecha"><h4 id="fechaNota">Fecha: @String.Format("{0:d/M/yyyy}", item.fecha) </h4></div>
-                        <div class="hora"><h4 id="horaNota">Apertura: @item.hora_apertura │ Cierre: @item.hora_cierre</h4></div>
+                        <div class="fecha"><h4 id="fechaNota" ><strong style="font-size: 19px;">@String.Format("{0:d/M/yyyy}", item.fecha)</strong></h4></div>
+                        <div class="hora">
+                            <h4 id="horaNota" class="secondary-text">Apertura: @item.hora_apertura</h4>
+                            <h4 id="horaNota" class="secondary-text">Cierre: @item.hora_cierre</h4>
+                        </div>
                     </div>
                     <div class="col-lg-5 pt-4 mb-3">
                         <div class="fecha"><h4 id="">Escribiente</h4></div>
