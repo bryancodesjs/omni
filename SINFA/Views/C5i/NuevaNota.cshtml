@@ -7,12 +7,10 @@
     <div class="resultados-wrap mt100">
         <!--item inicio-->
         <div class="item">
-
             <div class="multiple-input-wrap text-center">
                 <h2>Nueva Nota</h2>
                 <input type="number" value="@id" hidden id="IdDiario" />
             </div>
-
             <div class="multiple-input-wrap text-center">
                 <h4>Seleccione el Tipo de Nota</h4>
             </div>
@@ -28,28 +26,12 @@
                     <select id="categoriasSelect">
                     </select>
                 </div>
-                @*<div class="col-lg-4 _subCategoria">
-                        <h5>Sub-categoria</h5>
-                        <select id="subCategoriasSelect">
-                        </select>
-                    </div>*@
             </div>
 
 
             @*CAPTURA DE DATOS - NOTA VIEJA*@
 
             <div class="notaVieja mt-4">
-                @*<div class="multiple-input-wrap d-flex">
-                    <div class="col-lg-6 pr10">
-                        <h5>Institución / Directiva / Plan de Operaciones</h5>
-                        <select id="selectorInstitucion">
-                            <option value="1">Ejercito Nacional</option>
-                            <option value="">Cesfront</option>
-                            <option value="">Cestur</option>
-                        </select>
-                    </div>
-
-                </div>*@
                 <div class="multiple-input-wrap d-flex">
                     <div class="col-lg-4 pr10">
                         <h5>Asunto <span class="mandatory">*</span></h5>
@@ -63,7 +45,6 @@
                         <h5>Hora</h5>
                         <input type="time" placeholder="hora" id="Hora">
                     </div>
-
                 </div>
                 <div class="multiple-input-wrap d-flex">
                     <div class="col-lg-4 pr10">
@@ -72,22 +53,20 @@
                             <option value="0" selected disabled>Seleccione provincia</option>
                         </select>
                     </div>
-
                     <div class="col-lg-4 pr10">
                         <h5>Municipio</h5>
                         <select id="selectorMunicipio">
                             <option value="0" selected disabled>Seleccione la provincia primero</option>
                         </select>
                     </div>
-
                     <div class="col-lg-4">
                         <h5>Sector</h5>
                         <select id="selectorSector">
                             <option value="0" selected disabled>Seleccione el municipio primero</option>
                         </select>
                     </div>
-
                 </div>
+
                 <div class="multiple-input-wrap d-flex">
                     <div class="col-lg-12">
                         <h5>Direccion del Evento</h5>
@@ -100,7 +79,6 @@
                         <textarea id="Detalles" cols="30" rows="10" spellcheck="true"></textarea>
                     </div>
                 </div>
-
                 <div class="multiple-input-wrap d-flex">
                     <div class="col-lg-12 d-flex justify-content-end">
                         <button class="btn cancel-btn"><a href="/C5i/Diario/@id">Cancelar</a></button>
@@ -108,16 +86,12 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
         <!--item final-->
-
     </div>
 </div>
+
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script src="~/Scripts/scripts/sweetalert.js"></script>
-@*<script src="~/Scripts/scripts/C5i/Notas/GuardarNota.js"></script>*@
 <script src="~/Scripts/scripts/C5i/Notas/Menu.js"></script>
-@*<script src="~/Scripts/scripts/C5i/Estadisticas/Estadisticas.js"></script>*@

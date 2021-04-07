@@ -13,12 +13,10 @@
         <div class="resultados-wrap mt100">
             <!--item inicio-->
             <div class="item">
-
                 <div class="multiple-input-wrap text-center">
                     <h2>Nueva Tabla</h2>
                     <input type="number" value="@id" id="IdDiario" hidden />
                 </div>
-
                 <div class="multiple-input-wrap text-center">
                     <h4>Seleccione el Tipo de tabla</h4>
                 </div>
@@ -43,10 +41,10 @@
                 @*SEGUIMIENTO DIARIO*@
 
                 <div class="container div_seguimientoDiario mt-3">
-
                     <div class="multiple-input-wrap mt-mb-20 text-center">
                         <h4>Agregar Seguimiento</h4>
                     </div>
+
                     <div class="multiple-input-wrap d-flex">
                         <div class="col-lg-4 pr10">
                             <h5>Provincia <span class="mandatory">*</span></h5>
@@ -115,7 +113,6 @@
 
                 <!--item inicio-->
                 <div class="container div_OPERACIONES_REALIZADAS mt-3">
-
                     <div class="multiple-input-wrap text-center">
                         <h2>Nueva Nota</h2>
                         <input type="number" value="" hidden />
@@ -133,7 +130,6 @@
                                     <th scope="col">Personas Detenidas</th>
                                     <th scope="col">Vehiculos Retenidos</th>
                                     <th scope="col">Mercancia Retenida</th>
-
                                 </tr>
                             </thead>
                             <tbody id="tablaOperacionesRealizadas">
@@ -166,7 +162,6 @@
                             <input type="number" placeholder="0" id="PersonasDetenidas">
                         </div>
                     </div>
-
                     <div class="multiple-input-wrap d-flex">
                         <div class="col-lg-4 pr10">
                             <h5>Vehiculos Detenidos <span class="mandatory">*</span></h5>
@@ -176,16 +171,12 @@
                             <h5>Mercancia Retenida</h5>
                             <input type="text" placeholder="MercanciaRetenida" id="MercanciaRetenida">
                         </div>
-
                     </div>
-
-
                     <div class="multiple-input-wrap d-flex">
                         <div class="col-lg-12 d-flex justify-content-end">
                             <button id="btn_agregar_operacionesOperaciones" class="btn accent-btn" style="background-color:var(--green-btn);" type="button">Agregar</button>
                         </div>
                     </div>
-
                     <div class="multiple-input-wrap d-flex mt-mb-20">
                         <div class="col-lg-12 d-flex justify-content-end">
                             <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
@@ -197,7 +188,6 @@
                 @*DIRECTIVA 2a - CENTROS HOSPITALARIOS COVID 19*@
 
                 <div class="container div_HOSPITALARIOS_COVID19 mt-3">
-
                     <div class="multiple-input-wrap text-center">
                         <h4>Centros hospitalarios publicos y privados disponibles para casos covid91 a nivel nacional, con sus respectivas camas y ventiladores</h4>
                     </div>
@@ -275,9 +265,7 @@
                     <div class="multiple-input-wrap" style="background-color:var(--light-bg);border:1px solid var(--border); border-radius:9px;">
                         <div class="multiple-input-wrap">
                             <h5>Centros</h5>
-                            <div class="col-lg-3">
-                                <input type="number" id="totalCentrosPrivados">
-                            </div>
+                            <div class="col-lg-3"><input type="number" id="totalCentrosPrivados"></div>
                         </div>
                         <div class="multiple-input-wrap d-flex">
                             <div class="col-g-lg-4">
@@ -344,7 +332,6 @@
                     </div>
                 </div>
 
-
                 @*CENTROS DE AISLAMIENTO DE LAS FF.AA. CASOS COVID19 A NIVEL NACIONAL*@
                 <div class="container div_CENTROSDEAISLAMIENTO_COVID19 mt-3">
 
@@ -357,7 +344,6 @@
                                 <h5>Lugar</h5>
                                 <select name="" id="provinciaCentrodeAislamiento">
                                     <option value="x" selected disabled>Seleccione provincia</option>
-
                                 </select>
                             </div>
                             <div class="col-lg-3 pr10">
@@ -433,12 +419,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 @*LLEGADA DE VUELOS*@
                 <div class="container div_LLEGADA_VUELOS mt-3">
-
                     <div class="multiple-input-wrap text-center mb-4">
                         <h4>Llegada de vuelos y resultados de las pruebas rapidas realizadas por el MIDE, en los diferentes aeropuertos internacionales a nivel nacional</h4>
                     </div>
@@ -569,7 +553,6 @@
                     </div>
                 </div>
 
-
                 <div class="container DIV_NUEVOSCASOS_HOY mt-3">
                     <div class="multiple-input-wrap text-center mb-4">
                         <h4>Nuevos Casos el Dia de Hoy</h4>
@@ -600,10 +583,7 @@
                     </div>
                 </div>
 
-
-
                 <div class="container DIV_INTERVENCIONES_MIGRATORIA mt-3">
-
                     <div class="multiple-input-wrap text-center mb-4">
                         <h4>Intervenciones Migratorias y Retorno Voluntario</h4>
                     </div>
@@ -696,7 +676,6 @@
                                         <td>Sin datos</td>
                                         <td>Sin datos</td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -710,9 +689,7 @@
                     </div>
                 </div>
 
-
                 <div class="container DIV_RELACION_INSTITUCION mt-3">
-
                     <div class="multiple-input-wrap text-center mb-4">
                         <h4>Relacion de Personal y Vehiculos de los Puntos Fijos, Retenes y Patrullas</h4>
                         <h5>Relacion por Institucion y Comando Conjunto</h5>
@@ -768,8 +745,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="multiple-input-wrap d-flex mt-mb-20">
                                 <div class="col-lg-12 d-flex justify-content-end mt-3">
                                     <button class="btn accent-btn" type="button" id="btnAgregarRelacionPersonal" style="background-color:var(--green-btn);">Agregar</button>
@@ -821,9 +796,7 @@
                     </div>
                 </div>
 
-
                 <div class="container DIV_Interdicciones_Migratorias mt-3">
-
                     <div class="multiple-input-wrap text-center mb-4">
                         <h4>Interdicciones migratorias con relacion a la directiva 22(2020)</h4>
                     </div>
@@ -888,15 +861,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
             @*DIV ITEM*@
-
-
         </div>
     </div>
-
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

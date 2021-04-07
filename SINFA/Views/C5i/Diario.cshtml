@@ -28,7 +28,6 @@
                     <input type="hidden" value="@fecha" name="fecha">
                     <input class="full-width pl-3 mr-2" id="search" type="text" name="texto" spellcheck="true" required placeholder="Buscar dentro de este diario...">
                     <button class="btn btn-success btn-buscar" type="submit" id="searchButton"><i class="bi bi-search"></i>  Buscar</button>
-
                 }
             </div>
 
@@ -141,14 +140,11 @@
         {
             if (resultado != null)
             {
-
                 for (int i = 0; i < resultado.Count; i++)
                 {
                     if (resultado[i].Count > 0)
                     {
                         var Nombres = resultado[i][0].id_nota;
-
-                        
 
                         <div id="notaResumida" class="border rounded w-100 p-4 mt-3 background-primary mb-5">
                         <div class="nota">
@@ -174,7 +170,6 @@
                                                     }
                                                 }
                                             }
-
                                             @Html.Raw(asunto.Replace(texto, "<span style='background:yellow;Color:black'>" + texto + "</span>"))
                                         </b>
                                     </h3>
@@ -188,7 +183,6 @@
                                         <h4 class="secondary-text"><i class="bi bi-clock"></i> @resultado[1][0].hora</h4>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4">
                                     <div class="diario-img-wrap overflow-hidden w-100 h-100">
                                         <img class="w-100" src="~/img/blank-img.png" />
@@ -198,7 +192,6 @@
                         </div>
                     </div>
                     }
-
                 }
             }
             else
@@ -208,25 +201,21 @@
             <!--FINAL-->
         }
 
-
         @*MODAL*@
-        <div class="modal modalMenu" tabindex="-1" role="dialog">
+        <div class="modal fade modalMenu" tabindex="2" role="dialog">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content shadow">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Tipo de Registro</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <p>Seleccione</p>
                         <button class="btn btn-success" id="opcionNota">Nota</button>
                         <button class="btn btn-success" id="opcionTabla">Tabla</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
@@ -238,19 +227,15 @@
 <script type="text/javascript">
     $('#abrir').click(function (e) {
         e.preventDefault();
-
         const ID = $('#idDiario').val();
         $('.modalMenu').modal('show');
         console.log(ID)
-
         $('#opcionNota').click(function () {
             document.location.href = `/C5i/NuevaNota/${ID}`;
         });
-
         $('#opcionTabla').click(function () {
             document.location.href = `/C5i/NuevaTabla/${ID}`;
         })
-
     });
 </script>
 

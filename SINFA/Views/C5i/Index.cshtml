@@ -8,12 +8,10 @@
     <h2>@ViewBag.Title</h2>
     <div class="d-flex justify-content-between">
         <div class="col-lg-6 no-bootstrap-padding d-flex">
-            <!-- <i id="searchIcon" class="bi bi-search"></i> -->
             @using (Html.BeginForm("Search", "c5i", FormMethod.Post))
             {
                 <input class="full-width pl-3 mr-2" id="search" type="text" name="texto"required spellcheck="true" placeholder="Buscar en todos los diarios...">
                 <button class="btn btn-success btn-buscar" type="submit" id="searchButton"><i class="bi bi-search"></i> Buscar</button>
-
             }
         </div>
         <div class="col-lg-4 d-flex justify-content-end no-bootstrap-padding">
@@ -42,7 +40,6 @@
         {
             <div class="d-flex responsive-x-padding mb-2">
                 <div class="d-flex background-primary w-100 rounded border diario-resumen">
-
                     <div class="col-lg-1 pt-4 folder mb-3 d-flex align-items-center justify-content-center">
                         <i class="bi bi-unlock diario-icon"></i>
                     </div>
@@ -134,10 +131,6 @@
     </ul>
 </nav>
 </section>
-
-
-
-
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

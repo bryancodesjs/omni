@@ -187,6 +187,9 @@ h4 {
 .disabled-a:hover {
     color:var(--danger);
 }
+.modal-backdrop {
+    position:relative !important;
+}
 /*animation properties*/
 .duration-500 {
     --animate-duration: 0.5s;
