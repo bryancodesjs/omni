@@ -18,7 +18,7 @@ namespace SINFA.Models.C5i.DB_SQL_EntityFramework
         public DBEntities()
             : base("name=DBEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+           
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

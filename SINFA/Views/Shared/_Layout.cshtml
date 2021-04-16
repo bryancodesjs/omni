@@ -36,7 +36,18 @@
                 <div class="nav-content d-flex container-fluid justify-content-between mb-3 mt-3 responsive-x-padding">
                     <div class="session-user d-flex align-items-center justify-content-around">
                         <i id="user-icon" class="bi bi-person-circle pr-2 "></i>
-                        <h3 class="no-margin">@Session["Usuario"].ToString()</h3>
+                        
+                        @if (Session["Usuario"] != null)
+                        {
+                            <h3 class="no-margin">@Session["Usuario"].ToString()</h3>
+                        }
+                        else 
+                        { 
+                            <script>
+                                window.location.href = "/";
+                            </script>
+                        }
+                        
                     </div>
                     <div class="session-actions">
                         <a href="/Login" class="btn btn-outline-danger"><i class="bi bi-power"></i> Cerrar Sesion</a>

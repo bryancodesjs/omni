@@ -53,6 +53,7 @@ namespace SINFA.Controllers
                     dynamic jsonIndex = JsonConvert.DeserializeObject<dynamic>(jsonSerializerIndex);
 
                     ViewBag.Index = jsonIndex;
+
                     return View();
                 }
             }
@@ -274,19 +275,23 @@ namespace SINFA.Controllers
             return Json(_return, JsonRequestBehavior.AllowGet);
         }
         
-        public ActionResult Diario(int id, string fecha, string texto=null)
+        public ActionResult Diario(int id = 0, string texto=null, string fecha = null)
         {
             ViewBag.Fecha = fecha;
             int codeDiario = id;
             dynamic jsonSerializerTabla;
             dynamic jsonTabla;
-            if (texto == null)
+
+            //Session["idUsuario"] != null ?  Redirect("/") : null;
+
+            if (texto == null && id > 0)
             {
                 using (DBEntities db = new DBEntities())
                 {
 
                     //--------- CODIGOS PARA LAS TABLAS ------------------------------------------------------------
 
+                    //SEGUIMIENTO CASOS POSITIVOS
                     var tablas = (from t in db.seguimientocasospositivoscovids
                                   join u in db.usuarios on t.id_usuario equals u.id_usuario
                                   join p in db.Provincias on t.id_provincia equals p.Id
@@ -312,11 +317,93 @@ namespace SINFA.Controllers
 
                     ViewBag.Tablas = jsonTabla;
 
+                    //CENTROS DE AISLAMIENTOS
+                    var centrosAislamientos = (from d in db.centrosAislamientoes
+                                               join p in db.Provincias on d.id_provincia equals p.Id
+                                               where d.id_diario == id
+                                               select new 
+                                               {
+                                                    provincia = p.Nombre,
+                                                    d.centro,
+                                                    d.personal,
+                                                    d.habilitadas,
+                                                    d.ocupadas,
+                                                    d.disponibles
+                                               }).ToList();
 
+                    dynamic jsonSerializerAislamiento = JsonConvert.SerializeObject(centrosAislamientos);
+                    dynamic jsonAislamiento = JsonConvert.DeserializeObject<dynamic>(jsonSerializerAislamiento);
 
+                    ViewBag.CentrosAislamiento = jsonAislamiento;
 
+                    //Intervenciones Migratorias y Retorno Voluntario
+                    var INT_MIGRA = (from d in db.intervenciones_migratorias
+                                     join diario in db.diarios on d.id_diario equals diario.id_diario
+                                     join i in db.institucions on d.id_institucion equals i.id_institucion
+                                     join n in db.nacionalidads on d.id_nacionalidad equals n.id
+                                     join p in db.Provincias on d.id_provincia equals p.Id
+                                     where d.id_diario == id
+                                     select new 
+                                     { 
+                                         institucion = i.nombre,
+                                         d.directiva,
+                                         lugar = p.Nombre,
+                                         nacionalidad = n.pais,
+                                         d.retorno_voluntario,
+                                         d.hombres,
+                                         d.mujeres,
+                                         d.ninos,
+                                         d.total
+                                     }).ToList();
+
+                    dynamic jsonSerializerINT_MIGRA = JsonConvert.SerializeObject(INT_MIGRA);
+                    dynamic jsonINT_MIGRA = JsonConvert.DeserializeObject<dynamic>(jsonSerializerINT_MIGRA);
+
+                    ViewBag.Intervenciones_migratorias = jsonINT_MIGRA;
+
+                    // Llegada de vuelos y resultados de las pruebas rapidas
+                    var llegada_vuelos = (from d in db.llegada_vuelos
+                                          join a in db.aeropuertoes on d.id_aeropuerto equals a.id
+                                          where d.id_diario == id
+                                          select new 
+                                          {
+                                              aeropuerto = a.nombre,
+                                              d.tipo_prueba,
+                                              d.cantidad_vuelos,
+                                              d.pasajeros,
+                                              d.pruebas_pcr,
+                                              d.pruebas_realizadas,
+                                              d.pruebas_positivas,
+                                              d.pruebas_sospechosos,
+                                              d.pruebas_negativas,
+                                              d.porcentaje_presentadas,
+                                              d.porcentaje_realizadas,
+                                              d.porcentaje_positivas,
+                                              d.porcentaje_sospechosos
+                                          }).ToList();
+
+                    dynamic jsonSerializerLlegada_Vuelos = JsonConvert.SerializeObject(llegada_vuelos);
+                    dynamic jsonLlegada_Vuelos = JsonConvert.DeserializeObject<dynamic>(jsonSerializerLlegada_Vuelos);
+
+                    ViewBag.Llegada_Vuelos = jsonLlegada_Vuelos;
+
+                    // NUEVOS CASOS AL DIA DE HOY
+                    var nuevos_casos_hoy = (from d in db.nuevos_casos_hoy
+                                            where d.id_diario == id
+                                            select new
+                                            {
+                                                d.confirmados,
+                                                d.fallecidos,
+                                                d.nuevasPruebas
+                                            }).ToList();
+
+                    dynamic jsonSerializerNuevosCasos = JsonConvert.SerializeObject(nuevos_casos_hoy);
+                    dynamic jsonNuevosCasos = JsonConvert.DeserializeObject<dynamic>(jsonSerializerNuevosCasos);
+
+                    ViewBag.Nuevos_Casos = jsonNuevosCasos;
 
                     //--------- CODIGOS PARA NOTAS ------------------------------------------------------------
+
                     var result = (from n in db.notas
                                   join u in db.usuarios on n.id_usuario equals u.id_usuario
                                   join i in db.institucions on u.id_institucion equals i.id_institucion
@@ -365,9 +452,6 @@ namespace SINFA.Controllers
 
                     }
 
-
-
-
                 }
                 //----------------------------------------------------------------------------------------------
             }
@@ -391,9 +475,6 @@ namespace SINFA.Controllers
                     List<dynamic> lstBuscar = new List<dynamic>();
                     using (DBEntities db = new DBEntities())
                     {
-
-                        //-----------------------------------------------------------------------------------------
-
                         //--------- CODIGOS PARA LAS TABLAS ------------------------------------------------------------
 
                         var tablas = (from t in db.seguimientocasospositivoscovids
@@ -424,8 +505,7 @@ namespace SINFA.Controllers
                         var text = (from n in db.notas
                                     where n.id_diario != null && n.eliminado != 1 && n.detalles != null && n.asunto != null && n.id_usuario != null &&
                                    n.asunto.Contains(texto) || n.detalles.Contains(texto)
-                                    select n).ToList();
-                        
+                                    select n).ToList();                        
 
 
                         if (text != null)
@@ -436,9 +516,6 @@ namespace SINFA.Controllers
                                 int codigo = (int)itemCodigo.id_nota;
                                 if (Codig == id)
                                 {
-
-
-
                                     using (DBEntities db3 = new DBEntities())
                                     {
                                         var nota = (from n in db3.notas
@@ -472,14 +549,10 @@ namespace SINFA.Controllers
                                                         rango = r.Nombre
                                                     }).ToList();
 
-
-
                                         lstBuscar.Add(nota);
-
                                     }
+
                                     ViewBag.Resultado = lstBuscar;
-
-
 
                                     TextoBuscado = RemoveAccentsWithNormalization(texto.ToLower());
 
@@ -538,21 +611,6 @@ namespace SINFA.Controllers
 
                                     }
 
-
-
-
-
-
-
-
-                                   
-
-
-
-
-
-
-
                                 }
                                 else
                                 {
@@ -562,19 +620,12 @@ namespace SINFA.Controllers
 
                             }
 
-
-
-                        
-
-
                         }
                         else
                         {
                             return View();
 
                         }
-
-                        
 
                     }
                     return View();
@@ -585,13 +636,13 @@ namespace SINFA.Controllers
 
                 }
 
-
             }
             else
             {
                 return RedirectToAction("Index");
 
             }
+
             return View();
         }
 
@@ -780,7 +831,7 @@ namespace SINFA.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost]   
         public ActionResult Search(string texto)
         {
           
