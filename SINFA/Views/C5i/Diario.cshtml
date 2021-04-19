@@ -18,6 +18,12 @@
 
     var nuevosCasos = ViewBag.Nuevos_Casos;
 
+    var interdiccionesMigratorias = ViewBag.Interdiciones_Migratorias;
+
+    var relacion_personal_vehiculos = ViewBag.Relacion_personal_vehiculos;
+
+    var Operaciones_realizadas = ViewBag.Operaciones_Realizadas;
+
     var resultado = ViewBag.Resultado;
     var textonulo = ViewBag.Texto;
     var total = ViewBag.Total;
@@ -55,12 +61,25 @@
     <div class="d-flex responsive-x-padding flex-column">
 
         @*FOREACH PARA LAS TABLAS*@
+        @*-----------------------------*@
+
+        @if (
+            tablas.Count > 0 || centrosAislamiento.Count > 0 || intervenciones_migratorias.Count > 0
+            || llegadaVuelos.Count > 0 || nuevosCasos.Count > 0 || interdiccionesMigratorias.Count > 0
+            || relacion_personal_vehiculos.Count > 0 || Operaciones_realizadas.Count > 0)
+        {
+            <h2 class="text-left">DIRECTIVAS</h2>
+        }
+        else
+        {
+            <h2>Aun no has registrado ninguna directiva</h2>
+        }
+
 
         @if (tablas.Count > 0)
         {
-            <h2 class="text-left">DIRECTIVAS</h2>
             <div class="border rounded w-100 p-4 mt-3 background-primary ">
-                <h3 class="text-center mb-3 mt-4"><strong>Seguimiento Diario Casos Positivos y Sospechosos</strong></h3>
+                <h4 class="text-center mb-3 mt-4">Seguimiento Diario Casos Positivos y Sospechosos</h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -90,19 +109,11 @@
                     </tbody>
                 </table>
             </div>
-
         }
-        else
-        {
-            <h2>Aun no has registrado ninguna directiva</h2>
-        }
-
 
         @*CENTROS DE AISLAMIENTO*@
 
         @*CENTROS DE AISLAMIENTO DE LAS FF.AA. CASOS COVID19 A NIVEL NACIONAL*@
-
-
         @if (centrosAislamiento.Count > 0)
         {
             <div class="border rounded w-100 p-4 mt-3 background-primary ">
@@ -277,9 +288,134 @@
             </div>
         }
 
+        @*Interdicciones migratorias con relacion a la directiva 22(2020)*@
+        @if (interdiccionesMigratorias.Count > 0)
+        {
+            <div class="border rounded w-100 p-4 mt-3 background-primary ">
+
+                <div class="multiple-input-wrap text-center mb-3 mt-4">
+                    <h4>Interdicciones migratorias con relacion a la directiva 22(2020)</h4>
+                </div>
+
+                <div class="multiple-input-wrap">
+                    <!--tabla de renderizado de nota-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Provincia</th>
+                                    <td>ERD</td>
+                                    <td>FTCI - Cerco Fronterizo</td>
+                                    <td>CESFRONT</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaInterdiccionesMigratorias">
+                                @foreach (var InterMigra in interdiccionesMigratorias)
+                                {
+                                    <tr>
+                                        <td>@InterMigra.provincia</td>
+                                        <td>@InterMigra.erd</td>
+                                        <td>@InterMigra.ftci</td>
+                                        <td>@InterMigra.cesfront</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @*Relacion de Personal y Vehiculos de los Puntos Fijos, Retenes y Patrullas*@
+        @if (relacion_personal_vehiculos.Count > 0)
+        {
+            <div class="border rounded w-100 p-4 mt-3 background-primary ">
+                <div class="multiple-input-wrap text-center mb-3 mt-4">
+                    <h4>Relacion de Personal y Vehiculos de los Puntos Fijos, Retenes y Patrullas</h4>
+                </div>
+                <div class="multiple-input-wrap">
+                    <!--tabla de renderizado de nota-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" scope="col" class="text-center">Personal</th>
+                                    <th colspan="2" scope="col" class="text-center">Transporte</th>
+                                </tr>
+                                <tr>
+                                    <th>Institucion</th>
+                                    <th class="text-center">CCM</th>
+                                    <th class="text-center">CCN</th>
+                                    <th class="text-center">CCS</th>
+                                    <th class="text-center">CCE</th>
+                                    <td class="text-center">Vehiculos</td>
+                                    <td class="text-center">Motocicletas</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaRelacionPersonal">
+                                @foreach (var rpv in relacion_personal_vehiculos)
+                                {
+                                    <tr>
+                                        <td class="text-center">@rpv.institucion</td>
+                                        <td class="text-center">@rpv.ccm</td>
+                                        <td class="text-center">@rpv.ccn</td>
+                                        <td class="text-center">@rpv.ccs</td>
+                                        <td class="text-center">@rpv.cce</td>
+                                        <td class="text-center">@rpv.vehiculos</td>
+                                        <td class="text-center">@rpv.motocicletas</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @*Resultados de las Operaciones Realizadas*@
+        @if (Operaciones_realizadas.Count > 0)
+        {
+            <div class="border rounded w-100 p-4 mt-3 background-primary ">
+                <div class="multiple-input-wrap text-center mb-3 mt-4">
+                    <h4>Resultados de las Operaciones Realizadas</h4>
+                </div>
+
+                <div class="multiple-input-wrap text-center">
+                    <table class="table table-striped">
+                        <thead scope="col">
+                            <tr>
+                                <th scope="col">Lugar</th>
+                                <th scope="col">Unidad</th>
+                                <th scope="col">Personas Detenidas</th>
+                                <th scope="col">Vehiculos Retenidos</th>
+                                <th scope="col">Mercancia Retenida</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaOperacionesRealizadas">
+                            @foreach (var or in Operaciones_realizadas)
+                            {
+                                <tr>
+                                    <th scope="row">@or.provincia</th>
+                                    <td>@or.unidad</td>
+                                    <td>@or.personas_detenidas</td>
+                                    <td>@or.vehiculos_detenidos</td>
+                                    <td>@or.mercancia_retenida</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+
+
+
 
 
         @*FOREACH PARA LAS NOTAS*@
+        @*-----------------------------*@
 
         <section class="d-flex responsive-x-padding">
             <hr class="view-hr">
@@ -411,15 +547,16 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <button class="btn btn-success" id="opcionNota">Nota</button>
-                        <button class="btn btn-success" id="opcionTabla">Tabla</button>
+                        <button class="btn btn-success" id="opcionNota">Nota Informativa</button>
+                        <button class="btn btn-success" id="opcionTabla">Estadísticas</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
+</div>
 
+<!--JQuery-->
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script src="~/Scripts/scripts/sweetalert.js"></script>

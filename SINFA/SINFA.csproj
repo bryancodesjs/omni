@@ -214,6 +214,9 @@
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\rango.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\relacion_personal_vehiculos_puntosFijos.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\Sector.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -224,6 +227,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\subdirectiva.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\uci.cs">
@@ -332,13 +338,6 @@
     <Content Include="css\WebFont\scss\_mixins.scss" />
     <Content Include="css\WebFont\scss\_variables.scss" />
     <Content Include="css\WebFont\unicodesMap.json" />
-    <EntityDeploy Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.css.map" />
     <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-grid.min.css.map" />
     <Content Include="Dependencies\bootstrap-4.6.0-dist\css\bootstrap-reboot.css.map" />
@@ -609,6 +608,13 @@
     <Content Include="Dependencies\bootstrap-icons\package.json" />
     <Content Include="Dependencies\bootstrap-icons\README.md" />
     <Content Include="Dependencies\bootstrap-icons\svgo.yml" />
+    <EntityDeploy Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\C5i\DB_SQL_EntityFramework\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

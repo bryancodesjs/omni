@@ -45,6 +45,7 @@
         e.preventDefault();
 
         const obj = {
+            id_diario: $('#IdDiario').val(),
             id_institucion: idInstitucion,
             institucion: _Institucion,
             ccm: $('#ccm').val(),
@@ -78,6 +79,38 @@
         $('#tablaRelacionPersonal').append(fila);
 
         LimpiarCampos();
+    });
+
+    $('#_guardarNota').click((e) => {
+        e.preventDefault();
+
+        $.ajax(
+            {
+                url:    '/Directivas/RelacionPersonalVehiculos',
+                method: 'POST',
+                data: { model: Datos },
+                success: (res) => {                   
+                    const { Status } = res;
+
+                    if (Status == 200) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: '[OK]',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(() => {
+                            document.location.reload();
+                        }, 1600)
+                    }
+                },
+                error: (err) => {
+                    console.log(err.responseText());
+                }
+            }
+        );
+
     });
 
     const LimpiarCampos = () => {

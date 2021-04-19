@@ -37,18 +37,18 @@
                 <div class="nav-content d-flex container-fluid justify-content-between mb-3 mt-3 responsive-x-padding">
                     <div class="session-user d-flex align-items-center justify-content-around">
                         <i id="user-icon" class="bi bi-person-circle pr-2 "></i>
-                        
+
                         @if (Session["Usuario"] != null)
                         {
                             <h3 class="no-margin">@Session["Usuario"].ToString()</h3>
                         }
-                        else 
-                        { 
+                        else
+                        {
                             <script>
                                 window.location.href = "/";
                             </script>
                         }
-                        
+
                     </div>
                     <div class="session-actions">
                         <a href="/Login" class="btn btn-outline-danger"><i class="bi bi-power"></i> Cerrar Sesion</a>
@@ -60,14 +60,17 @@
         </div>
     </section>
 
+
+    <!--JQuery-->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <!--Bootstrap JS files-->
+    <script src="~/Dependencies/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <!-- custom js -->
+    <script src="~/Content/experimentacion.js"></script>
+    <script src="~/Scripts/scripts/C5i/auth/Salir.js"></script>
 </body>
-<!--Bootstrap JS files-->
-<script src="~/Dependencies/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-<!--JQuery-->
-<script src="~/Dependencies/jquery/jquery-3.6.0.js"></script>
-<!-- custom js -->
-<script src="~/Content/experimentacion.js"></script>
-<script src="~/Scripts/scripts/C5i/auth/Salir.js"></script>
+
 </html>
 
 

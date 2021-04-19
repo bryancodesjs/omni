@@ -402,6 +402,63 @@ namespace SINFA.Controllers
 
                     ViewBag.Nuevos_Casos = jsonNuevosCasos;
 
+                    // INTERDICIONES MIGRATORIAS CON RELACION A LA DIRECTIVA 22(2020)
+                    var interdiciones_migratorias = (from d in db.interdicciones_migratorias
+                                                     join p in db.Provincias on d.id_provincia equals p.Id
+                                                     where d.id_diario == id
+                                                     select new 
+                                                     {
+                                                         provincia = p.Nombre,
+                                                         d.erd,
+                                                         d.ftci,
+                                                         d.cesfront
+                                                     }).ToList();
+
+                    dynamic jsonSerializerInterdiciones_Migratorias = JsonConvert.SerializeObject(interdiciones_migratorias);
+                    dynamic jsonInterdiciones_Migratorias = JsonConvert.DeserializeObject<dynamic>(jsonSerializerInterdiciones_Migratorias);
+
+                    ViewBag.Interdiciones_Migratorias = jsonInterdiciones_Migratorias;
+
+                    //Relacion de Personal y Vehiculos de los Puntos Fijos, Retenes y Patrullas
+                    var relacionPersonal_vehiculos = (from r in db.relacion_personal_vehiculos_puntosFijos
+                                                      join d in db.diarios on r.id_diario equals d.id_diario
+                                                      join i in db.categorias on r.id_institucion equals i.id_categoria
+                                                      where r.id_diario == id
+                                                      select new
+                                                      {
+                                                          institucion = i.nombre,
+                                                          r.ccm,
+                                                          r.ccn,
+                                                          r.ccs,
+                                                          r.cce,
+                                                          r.vehiculos,
+                                                          r.motocicletas
+                                                      }).ToList();
+
+                    dynamic jsonSerializerRelacion_personal_vehiculos = JsonConvert.SerializeObject(relacionPersonal_vehiculos);
+                    dynamic jsonRelacion_personal_vehiculos = JsonConvert.DeserializeObject<dynamic>(jsonSerializerRelacion_personal_vehiculos);
+
+                    ViewBag.Relacion_personal_vehiculos = jsonRelacion_personal_vehiculos;
+
+
+
+                    var operaciones_realizadas = (from d in db.operaciones_realizadas
+                                                  join p in db.Provincias on d.lugar equals p.Id
+                                                  where d.id_diario == id
+                                                  select new
+                                                  {
+                                                      provincia = p.Nombre,
+                                                      d.unidad,
+                                                      d.personas_detenidas,
+                                                      d.vehiculos_detenidos,
+                                                      d.mercancia_retenida
+                                                  }).ToList();
+
+                    dynamic jsonSerializeroperaciones_realizadas = JsonConvert.SerializeObject(operaciones_realizadas);
+                    dynamic jsonOperaciones_realizadas = JsonConvert.DeserializeObject<dynamic>(jsonSerializeroperaciones_realizadas);
+
+                    ViewBag.Operaciones_Realizadas = jsonOperaciones_realizadas;
+
                     //--------- CODIGOS PARA NOTAS ------------------------------------------------------------
 
                     var result = (from n in db.notas

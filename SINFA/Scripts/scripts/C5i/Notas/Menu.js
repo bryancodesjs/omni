@@ -56,7 +56,7 @@ $(document).ready(() => {
 
     $('#categoriasSelect').change((e) => {
         const idCategoria = e.target.value;
-        console.log(idCategoria);
+        //console.log(idCategoria);
         
         $('.notaVieja').css("display", "block")
     })

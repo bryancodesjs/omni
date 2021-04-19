@@ -175,7 +175,7 @@
                 $('.DIV_RELACION_INSTITUCION').css("display", "none");
                 $('.DIV_Interdicciones_Migratorias').css("display", "none");
                 break;
-            case 'CENTROS HOSPITALARIOS PÚBLICOS Y PRIVADOS DISPONIBLES PARA CASOS COVID-19 A NIVEL NACIONAL, CON SUS RESPECTIVAS CAMAS Y VENTILADORES.':
+            case 'Capacidad Hospitalaria':
                 $('.div_HOSPITALARIOS_COVID19').css("display", "block");
                 $('.div_seguimientoDiario').css("display", "none");
                 $('.div_OPERACIONES_REALIZADAS').css("display", "none");
@@ -186,7 +186,7 @@
                 $('.DIV_RELACION_INSTITUCION').css("display", "none");
                 $('.DIV_Interdicciones_Migratorias').css("display", "none");
                 break;
-            case 'LLEGADA DE VUELOS Y RESULTADOS DE LAS PRUEBAS RÁPIDAS REALIZADAS POR EL MIDE, EN LOS DIFERENTES AEROPUERTOS INTERNACIONALES A NIVEL NACIONAL. ':
+            case 'Llegada Pasajeros y Pruebas Rapidas Realizadas':
                 $('.div_LLEGADA_VUELOS').css("display", "block");
                 $('.div_HOSPITALARIOS_COVID19').css("display", "none");
                 $('.div_seguimientoDiario').css("display", "none");
@@ -197,7 +197,7 @@
                 $('.DIV_RELACION_INSTITUCION').css("display", "none");
                 $('.DIV_Interdicciones_Migratorias').css("display", "none");
                 break;
-            case 'NUEVOS CASOS AL DÍA DE HOY':           
+            case 'Seguimiento a Pacientes Confirmados':           
                 $('.DIV_NUEVOSCASOS_HOY').css("display", "block");
                 $('.div_LLEGADA_VUELOS').css("display", "none");
                 $('.div_HOSPITALARIOS_COVID19').css("display", "none");

@@ -4,33 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="98b2f45cc0a94cdf985e84507250a387" Name="Diagram1">
-        <EntityTypeShape EntityType="NOTAS_C5iModel.categoria" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.diario" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.eje" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.institucion" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="d784838a86414ad4a70809857c933d1e" Name="Diagram1">
+        <EntityTypeShape EntityType="NOTAS_C5iModel.aeropuerto" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.cama" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.categoria" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.centro" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.centrosAislamiento" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.diario" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.directiva" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.eje" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.institucion" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.interdicciones_migratorias" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.intervenciones_migratorias" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.llegada_vuelos" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NOTAS_C5iModel.Municipio" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.nota" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.nacionalidad" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.nota" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.nuevos_casos_hoy" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.operaciones_realizadas" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NOTAS_C5iModel.Provincia" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.rango" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.Sector" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.seguimientocasospositivoscovid" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.usuario" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.rango" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.relacion_personal_vehiculos_puntosFijos" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.Sector" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.seguimientocasospositivoscovid" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.subcategoria" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.subdirectiva" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.sysdiagram" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.uci" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.usuario" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.ventiladore" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="NOTAS_C5iModel.FK_Municipio_Provincia" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.subcategoria" Width="1.5" PointX="5.375" PointY="8.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.directiva" Width="1.5" PointX="7.375" PointY="8.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.subdirectiva" Width="1.5" PointX="9.375" PointY="7.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.operaciones_realizadas" Width="2.75" PointX="8.125" PointY="10.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.centro" Width="1.5" PointX="5.375" PointY="11.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.uci" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.ventiladore" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.centrosAislamiento" Width="1.5" PointX="11.375" PointY="3.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.aeropuerto" Width="1.5" PointX="11.375" PointY="7.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.llegada_vuelos" Width="1.5" PointX="11.375" PointY="10.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.nuevos_casos_hoy" Width="1.5" PointX="13.375" PointY="0.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.nacionalidad" Width="1.5" PointX="13.375" PointY="3.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.intervenciones_migratorias" Width="1.5" PointX="13.375" PointY="6.75" />
-        <EntityTypeShape EntityType="NOTAS_C5iModel.interdicciones_migratorias" Width="1.5" PointX="13.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

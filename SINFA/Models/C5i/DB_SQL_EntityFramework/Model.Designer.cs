@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\SINFA-TURBI\NotasC5i-turbi\SINFA\Models\C5i\DB_SQL_EntityFramework\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\SINFA-TURBI\Actualizado\omni\SINFA\Models\C5i\DB_SQL_EntityFramework\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

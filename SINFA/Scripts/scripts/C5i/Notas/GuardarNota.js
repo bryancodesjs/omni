@@ -8,7 +8,7 @@ $(document).ready( () => {
         e.preventDefault();        
 
         const obj = {
-            id_institucion: $('#selectorInstitucion').val(),
+            id_institucion: $('#categoriasSelect').val(),
             asunto: $('#Asunto').val(),
             fecha: Fecha = $('#Fecha').val(),
             hora: Hora = $('#Hora').val(),
@@ -58,7 +58,7 @@ $(document).ready( () => {
             .then(res => {               
                 
                 $.each(res.data, function (key, value) {
-                    const { Id, Nombre } = value;
+                    const { Id, Nombre } = value;                    
 
                     $('#selectorProvincia').append(`                        
                         <option value="${Id}">${key + 1} - ${Nombre}</option>

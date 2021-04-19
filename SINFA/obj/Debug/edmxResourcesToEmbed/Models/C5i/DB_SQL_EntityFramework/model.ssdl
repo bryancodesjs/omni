@@ -207,6 +207,21 @@
     <Property Name="id_institucion" Type="int" />
     <Property Name="Nombre" Type="varchar" MaxLength="295" />
   </EntityType>
+  <EntityType Name="relacion_personal_vehiculos_puntosFijos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_diario" Type="int" />
+    <Property Name="id_institucion" Type="int" />
+    <Property Name="ccm" Type="int" />
+    <Property Name="ccn" Type="int" />
+    <Property Name="ccs" Type="int" />
+    <Property Name="cce" Type="int" />
+    <Property Name="vehiculos" Type="int" />
+    <Property Name="motocicletas" Type="int" />
+    <Property Name="fecha" Type="date" />
+  </EntityType>
   <EntityType Name="Sector">
     <Key>
       <PropertyRef Name="id" />
@@ -249,6 +264,16 @@
     <Property Name="id_subdirectivas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_directiva" Type="int" />
     <Property Name="nombre" Type="varchar" MaxLength="395" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="uci">
     <Key>
@@ -318,10 +343,12 @@
     <EntitySet Name="operaciones_realizadas" EntityType="Self.operaciones_realizadas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rango" EntityType="Self.rango" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="relacion_personal_vehiculos_puntosFijos" EntityType="Self.relacion_personal_vehiculos_puntosFijos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seguimientocasospositivoscovid" EntityType="Self.seguimientocasospositivoscovid" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subcategorias" EntityType="Self.subcategorias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subdirectivas" EntityType="Self.subdirectivas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="uci" EntityType="Self.uci" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ventiladores" EntityType="Self.ventiladores" Schema="dbo" store:Type="Tables" />

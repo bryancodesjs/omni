@@ -3,6 +3,7 @@ using SINFA.Models.C5i.DB_SQL_EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -293,6 +294,34 @@ namespace SINFA.Controllers
                 return Json(_return, JsonRequestBehavior.AllowGet);
             }      
            
+        }
+
+        public async Task<JsonResult> RelacionPersonalVehiculos(List<relacion_personal_vehiculos_puntosFijos> model)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                Respuesta _return = new Respuesta();
+
+                foreach (var item in model)
+                {
+                    item.fecha = DateTime.Now;
+
+                    db.relacion_personal_vehiculos_puntosFijos.Add(item);
+                    var res = await db.SaveChangesAsync();
+
+                    if (res == 1)
+                    {
+                        _return.Status = 200;
+                    }
+                    else
+                    {
+                        _return.Status = 404;
+                    }
+                }
+
+                return Json(_return, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
 
