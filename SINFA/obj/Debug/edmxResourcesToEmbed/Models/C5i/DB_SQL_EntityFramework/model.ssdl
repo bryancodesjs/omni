@@ -75,6 +75,15 @@
     <Property Name="id_eje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="65" />
   </EntityType>
+  <EntityType Name="ImageNotas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdNota" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="varchar(max)" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="institucion">
     <Key>
       <PropertyRef Name="id_institucion" />
@@ -332,6 +341,7 @@
     <EntitySet Name="diario" EntityType="Self.diario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="directivas" EntityType="Self.directivas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ejes" EntityType="Self.ejes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageNotas" EntityType="Self.ImageNotas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="institucion" EntityType="Self.institucion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="interdicciones_migratorias" EntityType="Self.interdicciones_migratorias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="intervenciones_migratorias" EntityType="Self.intervenciones_migratorias" Schema="dbo" store:Type="Tables" />

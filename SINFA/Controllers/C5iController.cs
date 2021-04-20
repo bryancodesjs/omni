@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using SINFA.Models.C5i.Modelos;
 
 namespace SINFA.Controllers
 {
@@ -163,7 +164,87 @@ namespace SINFA.Controllers
            
         }
 
-        public JsonResult GuardarCambios(nota model)
+
+
+        public ActionResult CargarImagen()
+        {
+
+
+
+            return View();
+        }
+
+
+
+        //Registro de Imagen
+        [HttpPost]
+        public ActionResult CargarImagen(HttpPostedFileBase file, int IdNota=0)
+        {
+            Imagenes img = new Imagenes();
+            ImageNotas imgn = new ImageNotas();
+            if (file!=null)
+            {
+                string ruta = Server.MapPath("~/ImgNotas/");
+                ruta += file.FileName;
+                img.FileUpload(ruta, file);
+                int CodigoNota = ObtenerIdNota(IdNota);
+               
+                if (CodigoNota>0)
+                {
+                    imgn.IdNota = CodigoNota;
+                    imgn.Imagen = file.FileName.ToString();
+                    imgn.Fecha = DateTime.Now;
+                    using (DBEntities db = new DBEntities())
+                    {
+
+                        db.ImageNotas.Add(imgn);
+                        db.SaveChanges();
+
+
+                    }
+
+                }
+                return View();            
+            }
+            else {
+                return View();
+            }
+
+
+        
+        }
+
+
+        public int ObtenerIdNota(int IdNota = 0)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                nota query = new nota();
+                if (IdNota == 0 )
+                {
+                int   queryyyy = (from d in db.notas 
+                                  where d.eliminado != 1
+                                 
+                                  select new { d.id_nota }).Max(d=>d.id_nota);
+
+
+                    query.id_nota = queryyyy;
+
+
+
+                }
+                else
+
+                {
+
+                    query = (dynamic)db.notas.Where(d => d.id_nota == IdNota && d.eliminado!=1);
+                }
+
+                return query.id_nota;
+
+            }
+        }
+            public JsonResult GuardarCambios(nota model)
         {
             Respuesta _return = new Respuesta();
 

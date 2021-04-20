@@ -358,5 +358,15 @@
       <End Role="Provincia" EntitySet="Provincias" />
       <End Role="Municipio" EntitySet="Municipios" />
     </AssociationSet>
+    <EntitySet Name="ImageNotas" EntityType="NOTAS_C5iModel.ImageNotas" />
   </EntityContainer>
+  <EntityType Name="ImageNotas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdNota" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

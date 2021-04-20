@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Cargar Imagenes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CargarImagen</h2>
+<div class="container">
+    @using (Html.BeginForm("CargarImagen", "C5i",FormMethod.Post, new { enctype = "multipart/form-data"}))
+    {
+        <div class="resultados-wrap mt100">
+
+            <input type="file" class="form-control" name="file" id="file" multiple />
+
+
+
+
+            <div class="multiple-input-wrap d-flex">
+                <div class="col-lg-12 d-flex justify-content-end">
+                    <button class="btn cancel-btn"><a href="/C5i/Diario/">Cancelar</a></button>
+                    <button  class="btn accent-btn" type="submit" id="_guardarNota">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+</div>

@@ -166,6 +166,9 @@
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\eje.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C5i\DB_SQL_EntityFramework\ImageNotas.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\institucion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -241,6 +244,8 @@
     <Compile Include="Models\C5i\DB_SQL_EntityFramework\ventiladore.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C5i\Modelos\Imagenes.cs" />
+    <Compile Include="Models\C5i\Modelos\ImgNotas.cs" />
     <Compile Include="Models\C5i\Modelos\Login.cs" />
     <Compile Include="Models\C5i\Modelos\NuevaNota.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -681,9 +686,11 @@
     <Content Include="Views\C5i\Search.cshtml" />
     <Content Include="Views\C5i\NuevaTabla.cshtml" />
     <Content Include="Views\C5i\Personal.cshtml" />
+    <Content Include="Views\C5i\CargarImagen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImgNotas\" />
     <Folder Include="Views\Directivas\" />
   </ItemGroup>
   <ItemGroup>

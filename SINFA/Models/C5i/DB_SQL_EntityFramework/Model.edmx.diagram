@@ -34,6 +34,7 @@
         <EntityTypeShape EntityType="NOTAS_C5iModel.usuario" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NOTAS_C5iModel.ventiladore" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="NOTAS_C5iModel.FK_Municipio_Provincia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NOTAS_C5iModel.ImageNotas" Width="1.5" PointX="11.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

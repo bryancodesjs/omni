@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NOTAS_C5iModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NOTAS_C5iModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aeropuerto">
           <Key>
             <PropertyRef Name="id" />
@@ -79,6 +79,15 @@
           </Key>
           <Property Name="id_eje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="65" />
+        </EntityType>
+        <EntityType Name="ImageNotas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNota" Type="int" Nullable="false" />
+          <Property Name="Imagen" Type="varchar(max)" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="institucion">
           <Key>
@@ -337,6 +346,7 @@
           <EntitySet Name="diario" EntityType="Self.diario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="directivas" EntityType="Self.directivas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ejes" EntityType="Self.ejes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageNotas" EntityType="Self.ImageNotas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="institucion" EntityType="Self.institucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="interdicciones_migratorias" EntityType="Self.interdicciones_migratorias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="intervenciones_migratorias" EntityType="Self.intervenciones_migratorias" Schema="dbo" store:Type="Tables" />
@@ -362,8 +372,7 @@
             <End Role="Municipio" EntitySet="Municipio" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NOTAS_C5iModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -725,7 +734,17 @@
             <End Role="Provincia" EntitySet="Provincias" />
             <End Role="Municipio" EntitySet="Municipios" />
           </AssociationSet>
+          <EntitySet Name="ImageNotas" EntityType="NOTAS_C5iModel.ImageNotas" />
         </EntityContainer>
+        <EntityType Name="ImageNotas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNota" Type="Int32" Nullable="false" />
+          <Property Name="Imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1071,6 +1090,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImageNotas">
+            <EntityTypeMapping TypeName="NOTAS_C5iModel.ImageNotas">
+              <MappingFragment StoreEntitySet="ImageNotas">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="IdNota" ColumnName="IdNota" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1085,7 +1114,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
